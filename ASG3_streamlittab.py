@@ -32,10 +32,12 @@ data = pandas.read_csv(csv_file_path)
 streamlit.write("CSV File Contents:")
 streamlit.dataframe(data)
 
-zip_file_url = "https://github.com/kaylaong883/ASG3_streamlit_tab/blob/main/snowflake_data.zip"
+zip_file_url = "https://github.com/kaylaong883/ASG3_streamlit_tab/raw/main/snowflake_data.zip"
+
 response = requests.get(zip_file_url)
 zip_file = zipfile.ZipFile(io.BytesIO(response.content))
 
+# Assuming the zip file contains a single CSV file
 csv_file_name = zip_file.namelist()[0]
 with zip_file.open(csv_file_name) as file:
     df = pandas.read_csv(file)
