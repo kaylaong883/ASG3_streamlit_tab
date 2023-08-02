@@ -9,8 +9,8 @@ streamlit.title('Seasonal Menu Variations')
 streamlit.header('Truck Menu Available')
 def main():
     data = {
-        'Truck Name': ['Guac n Roll', 'Tasty Tibs', 'The Mac Shack', 'Peking Truck', 'Le Coin des Crêpes', 'Freezing Point', 'Nani's Kitchen', 'The Mega Melt', 'Better Off Bread', 'Not the Wurst Hot Dogs', 'Plant Palace', 'Cheeky Greek', 'Revenge of the Curds', ''Kitakata Ramen Bar', 'Smoky BBQ'],
-        'Menu Name': ['Tacos', 'Ethiopian', 'Mac & Cheese', 'Chinese', 'Crepes', 'Ice Cream', 'Indian', 'Grilled Cheese', ''Sandwiches', 'Hot Dogs', 'Vegetarian', ''Gyros', 'Poutine', 'Ramen', 'BBQ']
+        'Truck Name': ["Guac n' Roll", "Tasty Tibs", "The Mac Shack", "Peking Truck", "Le Coin des Crêpes", "Freezing Point", "Nani's Kitchen", "The Mega Melt", "Better Off Bread", "Not the Wurst Hot Dogs", "Plant Palace", "Cheeky Greek", "Revenge of the Curds", "Kitakata Ramen Bar", "Smoky BBQ"],
+        'Menu Name': ['Tacos', 'Ethiopian', 'Mac & Cheese', 'Chinese', 'Crepes', 'Ice Cream', 'Indian', 'Grilled Cheese', 'Sandwiches', 'Hot Dogs', 'Vegetarian', 'Gyros', 'Poutine', 'Ramen', 'BBQ']
     }
     df = pandas.DataFrame(data)
 
