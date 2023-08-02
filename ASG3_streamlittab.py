@@ -7,18 +7,26 @@ from urllib.error import URLError
 streamlit.title('Seasonal Menu Variations')
 
 streamlit.header('Truck Menu Available')
-def main():
-    data = {
-        'Truck Name': ["Guac n' Roll", "Tasty Tibs", "The Mac Shack", "Peking Truck", "Le Coin des Crêpes", "Freezing Point", "Nani's Kitchen", "The Mega Melt", "Better Off Bread", "Not the Wurst Hot Dogs", "Plant Palace", "Cheeky Greek", "Revenge of the Curds", "Kitakata Ramen Bar", "Smoky BBQ"],
-        'Menu Name': ['Tacos', 'Ethiopian', 'Mac & Cheese', 'Chinese', 'Crepes', 'Ice Cream', 'Indian', 'Grilled Cheese', 'Sandwiches', 'Hot Dogs', 'Vegetarian', 'Gyros', 'Poutine', 'Ramen', 'BBQ']
-    }
-    df = pandas.DataFrame(data)
 
-    # Display the DataFrame as a table
-    streamlit.table(df)
+data = {
+    'Truck Name': ["Guac n' Roll", "Tasty Tibs", "The Mac Shack", "Peking Truck", "Le Coin des Crêpes", "Freezing Point", "Nani's Kitchen", "The Mega Melt", "Better Off Bread", "Not the Wurst Hot Dogs", "Plant Palace", "Cheeky Greek", "Revenge of the Curds", "Kitakata Ramen Bar", "Smoky BBQ"],
+    'Menu Name': ['Tacos', 'Ethiopian', 'Mac & Cheese', 'Chinese', 'Crepes', 'Ice Cream', 'Indian', 'Grilled Cheese', 'Sandwiches', 'Hot Dogs', 'Vegetarian', 'Gyros', 'Poutine', 'Ramen', 'BBQ']
+}
+df = pandas.DataFrame(data)
 
-if __name__ == '__main__':
-    main()
+# Display the DataFrame as a table
+streamlit.table(df)
+
+# read csv
+# Provide the path to the CSV file
+csv_file_path = "C:/Users/kayla/OneDrive - Ngee Ann Polytechnic/Documents/NP YEAR 3 SEM 1/NP ICP/final_data_noscaler.csv"
+
+# Read the CSV file into a DataFrame using Pandas
+df = pandas.read_csv(csv_file_path)
+
+# Display the DataFrame as a table in the Streamlit app
+streamlit.write("CSV File Contents:")
+streamlit.dataframe(df)
 
 streamlit.header('🍌🥭 Build Your Own Fruit Smoothie 🥝🍇')
 
