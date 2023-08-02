@@ -1,5 +1,5 @@
 import streamlit
-import pandas
+import pandas as pd
 import requests
 import snowflake.connector
 from urllib.error import URLError
@@ -15,7 +15,7 @@ def main():
     df = pd.DataFrame(data)
 
     # Display the DataFrame as a table
-    st.table(df)
+    streamlit.table(df)
 
 if __name__ == '__main__':
     main()
