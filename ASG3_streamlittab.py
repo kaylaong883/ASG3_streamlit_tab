@@ -4,13 +4,21 @@ import requests
 import snowflake.connector
 from urllib.error import URLError
 
-streamlit.title('My Parents New Healthy Diner')
+streamlit.title('Seasonal Menu Variations')
 
-streamlit.header('Breakfast Menu')
-streamlit.text('🥣 Omega 3 & Blueberry Oatmeal')
-streamlit.text('🥗 Kale, Spinach & Rocket Smoothie')
-streamlit.text('🐔 Hard-Boiled Free-Range Egg')
-streamlit.text('🥑🍞 Avocado Toast')
+streamlit.header('Truck Menu Available')
+def main():
+    data = {
+        'Truck Name': ['Truck A', 'Truck B', 'Truck C'],
+        'Menu Name': ['Menu 1', 'Menu 2', 'Menu 3']
+    }
+    df = pd.DataFrame(data)
+
+    # Display the DataFrame as a table
+    st.table(df)
+
+if __name__ == '__main__':
+    main()
 
 streamlit.header('🍌🥭 Build Your Own Fruit Smoothie 🥝🍇')
 
