@@ -40,6 +40,10 @@ csv_file_name = zip_file.namelist()[0]
 with zip_file.open(csv_file_name) as file:
     df = pandas.read_csv(file)
 
+# Display the DataFrame as a table in the Streamlit app
+streamlit.write("Zip File CSV File Contents:")
+streamlit.dataframe(df)
+
 streamlit.header('🍌🥭 Build Your Own Fruit Smoothie 🥝🍇')
 
 # import pandas
