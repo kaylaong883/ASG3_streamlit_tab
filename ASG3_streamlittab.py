@@ -4,6 +4,10 @@ import requests
 import snowflake.connector
 from urllib.error import URLError
 
+import zipfile
+import io
+import requests
+
 streamlit.title('Seasonal Menu Variations')
 
 streamlit.header('Truck Menu Available')
@@ -27,6 +31,14 @@ data = pandas.read_csv(csv_file_path)
 # Display the DataFrame as a table in the Streamlit app
 streamlit.write("CSV File Contents:")
 streamlit.dataframe(data)
+
+zip_file_url = "https://github.com/kaylaong883/ASG3_streamlit_tab/blob/main/snowflake_data.zip"
+response = requests.get(zip_file_url)
+zip_file = zipfile.ZipFile(io.BytesIO(response.content))
+
+csv_file_name = zip_file.namelist()[0]
+with zip_file.open(csv_file_name) as file:
+    df = pandas.read_csv(file)
 
 streamlit.header('🍌🥭 Build Your Own Fruit Smoothie 🥝🍇')
 
