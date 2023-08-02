@@ -19,7 +19,7 @@ streamlit.table(df)
 
 # read csv
 # Provide the path to the CSV file
-csv_file_path = "C:/Users/kayla/OneDrive - Ngee Ann Polytechnic/Documents/NP YEAR 3 SEM 1/NP ICP/final_data_noscaler.csv"
+csv_file_path = "C://Users//kayla//OneDrive - Ngee Ann Polytechnic//Documents//NP YEAR 3 SEM 1//NP ICP//final_data_noscaler.csv"
 
 # Read the CSV file into a DataFrame using Pandas
 df = pandas.read_csv(csv_file_path)
