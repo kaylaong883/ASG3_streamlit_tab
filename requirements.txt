@@ -1,2 +1,11 @@
 # requirements.txt
 snowflake-connector-python
+streamlit
+pandas
+numpy
+pydeck
+joblib
+pickle
+requests
+zipfile
+io
