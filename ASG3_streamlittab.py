@@ -40,7 +40,7 @@ def main():
     st.title("Read CSV from Zipped File on GitHub")
 
     # Replace the 'github_url' variable with the actual URL of the zipped CSV file on GitHub
-    github_url = "https://github.com/KohYuQing/ICP_INDV_STREAMLIT/raw/main/snowflake_data.zip"
+    github_url = "https://github.com/kaylaong883/ASG3_streamlit_tab/blob/main/snowflake_data.zip"
     df = read_csv_from_zipped_github(github_url)
 
 
