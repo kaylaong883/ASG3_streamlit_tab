@@ -2,8 +2,8 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import pydeck as pdk
-import joblib
-from joblib import load
+#import joblib
+#from joblib import load
 import pickle
 from xgboost import XGBRegressor 
 import requests
