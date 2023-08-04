@@ -50,7 +50,11 @@ def main():
 data = load_data()
 maintable = main()
 
-st.title('Seasonal Menu Variations')
+# Define the app title and favicon
+st.title('Seasonal Menu Variations') 
+st.subheader('Predict')
+st.markdown("This tab allows you to make predictions on the sales of the trucks  based on the neighbourhood and room type. The model used is a Random Forest Regressor trained on the Airbnb Singapore listings dataset.")
+st.write('Choose a neighborhood group, neighborhood, and room type to get the predicted average price.')
 
 st.header('Truck Menu Available')
 
@@ -62,6 +66,8 @@ truck_menu_table = pd.DataFrame(data)
 
 # Display the DataFrame as a table
 st.table(truck_menu_table)
+
+
 
 streamlit.header('🍌🥭 Build Your Own Fruit Smoothie 🥝🍇')
 
