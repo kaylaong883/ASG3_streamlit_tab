@@ -3,7 +3,7 @@ import pandas as pd
 import numpy as np
 import pydeck as pdk
 import joblib
-from joblib import load
+# from joblib import load
 import pickle
 from sklearn import preprocessing
 
@@ -47,29 +47,29 @@ def main():
 data = load_data()
 maintable = main()
 
-streamlit.title('Seasonal Menu Variations')
+st.title('Seasonal Menu Variations')
 
-streamlit.header('Truck Menu Available')
+st.header('Truck Menu Available')
 
 data = {
     'Truck Name': ["Guac n' Roll", "Tasty Tibs", "The Mac Shack", "Peking Truck", "Le Coin des Crêpes", "Freezing Point", "Nani's Kitchen", "The Mega Melt", "Better Off Bread", "Not the Wurst Hot Dogs", "Plant Palace", "Cheeky Greek", "Revenge of the Curds", "Kitakata Ramen Bar", "Smoky BBQ"],
     'Menu Name': ['Tacos', 'Ethiopian', 'Mac & Cheese', 'Chinese', 'Crepes', 'Ice Cream', 'Indian', 'Grilled Cheese', 'Sandwiches', 'Hot Dogs', 'Vegetarian', 'Gyros', 'Poutine', 'Ramen', 'BBQ']
 }
-truck_menu_table = pandas.DataFrame(data)
+truck_menu_table = pd.DataFrame(data)
 
 # Display the DataFrame as a table
-streamlit.table(truck_menu_table)
+st.table(truck_menu_table)
 
 # read csv
 # Provide the path to the CSV file
-csv_file_path = "final_data_noscaler.csv"
+# csv_file_path = "final_data_noscaler.csv"
 
 # Read the CSV file into a DataFrame using Pandas
-data = pandas.read_csv(csv_file_path)
+# data = pandas.read_csv(csv_file_path)
 
 # Display the DataFrame as a table in the Streamlit app
-streamlit.write("CSV File Contents:")
-streamlit.dataframe(data)
+st.write("CSV File Contents:")
+st.dataframe(data)
 
 zip_file_url = "https://github.com/kaylaong883/ASG3_streamlit_tab/raw/main/snowflake_data.zip"
 
