@@ -63,31 +63,6 @@ truck_menu_table = pd.DataFrame(data)
 # Display the DataFrame as a table
 st.table(truck_menu_table)
 
-# read csv
-# Provide the path to the CSV file
-# csv_file_path = "final_data_noscaler.csv"
-
-# Read the CSV file into a DataFrame using Pandas
-# data = pandas.read_csv(csv_file_path)
-
-# Display the DataFrame as a table in the Streamlit app
-st.write("CSV File Contents:")
-st.dataframe(data)
-
-zip_file_url = "https://github.com/kaylaong883/ASG3_streamlit_tab/raw/main/snowflake_data.zip"
-
-response = requests.get(zip_file_url)
-zip_file = zipfile.ZipFile(io.BytesIO(response.content))
-
-# Assuming the zip file contains a single CSV file
-csv_file_name = zip_file.namelist()[0]
-with zip_file.open(csv_file_name) as file:
-    df = pandas.read_csv(file)
-
-# Display the DataFrame as a table in the Streamlit app
-streamlit.write("Zip File CSV File Contents:")
-streamlit.dataframe(df)
-
 streamlit.header('🍌🥭 Build Your Own Fruit Smoothie 🥝🍇')
 
 # import pandas
