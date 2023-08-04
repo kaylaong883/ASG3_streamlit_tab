@@ -2,10 +2,6 @@
 snowflake-connector-python
 streamlit
 pandas
-numpy
+scikit-learn
 pydeck
-joblib
-pickle
-requests
-zipfile
-io
+xgboost
