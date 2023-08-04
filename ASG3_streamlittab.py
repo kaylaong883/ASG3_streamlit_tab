@@ -5,7 +5,7 @@ import pydeck as pdk
 # import joblib
 # from joblib import load
 import pickle
-from sklearn import preprocessing
+# from sklearn import preprocessing
 
 @st.cache_data
 def load_data():
