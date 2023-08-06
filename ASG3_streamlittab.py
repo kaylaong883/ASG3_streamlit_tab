@@ -142,7 +142,7 @@ with tab4:
     season_input = get_season()
     season_int = season_mapping[season_input]
     
-    
+    st.write(maintable)
     
     # Define the user input functions
     
