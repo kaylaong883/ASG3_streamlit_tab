@@ -135,6 +135,8 @@ with tab4:
       truckb_input = get_truckb()
       truckb_int = truckb_mapping[truckb_input]
 
+      maintable = pd.DataFrame(maintable)
+  
       filter_rows = []
       for index, row in maintable.iterrows():
         if (season_input in row['SEASON']) & (truckb_input in row['TRUCK_BRAND_NAME']):
