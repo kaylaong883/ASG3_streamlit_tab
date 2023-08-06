@@ -120,17 +120,13 @@ with tab4:
       
       menuitem_reverse_mapping = {v: k for k, v in menuitem_mapping.items()}
       menuitem_labels = list(menuitem_mapping.keys())
-
-      def get_CITY():
-        city = st.selectbox('Select a City', city_labels)
-        return city
-          
-      city_input = get_CITY()
-      city_int = city_mapping[city_input]
   
       def get_season():
         season = st.selectbox('Select a season', season_labels)
         return season
+
+      season_input = get_season()
+      season_int = season_mapping[season_input]
       
       def get_truckb():
           truckb = st.selectbox('Select a Truck Brand Name', truckb_labels)
@@ -138,11 +134,16 @@ with tab4:
           
       truckb_input = get_truckb()
       truckb_int = truckb_mapping[truckb_input]
+
       
-  
+      # def get_CITY():
+      # city = st.selectbox('Select a City', city_labels)
+      # return city
           
-      season_input = get_season()
-      season_int = season_mapping[season_input]
+      # city_input = get_CITY()
+      # city_int = city_mapping[city_input]
+          
+
 
       # PRINT TABLE
       st.write(maintable)
