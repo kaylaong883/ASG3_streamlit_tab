@@ -134,14 +134,13 @@ with tab4:
           
       truckb_input = get_truckb()
       truckb_int = truckb_mapping[truckb_input]
-
-      maintable = pd.DataFrame(maintable)
   
       filter_rows = []
       for index, row in maintable.iterrows():
         if (season_input in row['SEASON']) & (truckb_input in row['TRUCK_BRAND_NAME']):
           filter_rows.append(row)
-      filter_df = pd.Dataframe(filter_rows, columns=df.columns)
+          
+      filter_df = pd.DataFrame(filter_rows, columns=df.columns)
 
       # get unique values of trucks for filtered data
       truck_array = filter_df['TRUCK_ID'].unique()
