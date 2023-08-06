@@ -68,8 +68,8 @@ with tab4:
     
     
     data = load_data()
-    # github_url = "https://github.com/kaylaong883/ASG3_streamlit_tab/blob/main/final_data.zip"
-    # maintable = read_csv_from_zipped_github(github_url)
+    github_url = "https://github.com/kaylaong883/ASG3_streamlit_tab/blob/main/final_data.zip"
+    maintable = read_csv_from_zipped_github(github_url)
     
     # Define the app title and favicon
     st.title('Seasonal Menu Variations') 
