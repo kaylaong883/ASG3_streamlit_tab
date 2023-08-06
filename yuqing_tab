@@ -4,7 +4,7 @@ import numpy as np
 # import pydeck as pdk
 # import joblib
 # from joblib import load
-import pickle
+# import pickle
 from xgboost import XGBRegressor 
 import requests
 import zipfile
