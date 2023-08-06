@@ -68,7 +68,7 @@ with tab4:
       
       
       data = load_data()
-      github_url = "https://github.com/kaylaong883/ASG3_streamlit_tab/raw/main/y2022_data.zip"
+      github_url = "https://github.com/kaylaong883/ASG3_streamlit_tab/raw/main/y2022_data_withtid.zip"
       maintable = read_csv_from_zipped_github(github_url)
       
       # Define the app title and favicon
