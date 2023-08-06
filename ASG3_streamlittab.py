@@ -135,7 +135,30 @@ with tab4:
       truckb_input = get_truckb()
       truckb_int = truckb_mapping[truckb_input]
 
+      filter_rows = []
+      for index, row in maintable.iterrows():
+        if (season_input in row['SEASON']) & (truckb_input in row['TRUCK_BRAND_NAME']):
+          filter_rows.append(row)
+      filter_df = pd.Dataframe(filter_rows, columns=df.columns)
+
+      # get unique values of trucks for filtered data
+      truck_array = filter_df['TRUCK_ID'].unique()
       
+      # user input for number of trucks
+      user_truck_input = st.number_input("Enter the number of trucks you want to implement", min_value=0, max_value=len(truck_array))
+      st.write("No. of trucks:", user_truck_input)
+
+      if user_truck_input > len(truck_array):
+          st.error("Error: Number of trucks exceeds available options")
+
+      user_choose_truck = truck_list[:user_truck_input]
+
+      # filter data again to only contain the number of trucks the user choose
+      filter_user = filter_df[filter_df['TRUCK_ID'].isin(user_choose_truck)]
+
+      st.write("Truck numbers:", user_choose_truck)
+      st.write(filter_user)
+  
       # def get_CITY():
       # city = st.selectbox('Select a City', city_labels)
       # return city
@@ -146,7 +169,7 @@ with tab4:
 
 
       # PRINT TABLE
-      st.write(maintable)
+      # st.write(maintable)
     
 
 
