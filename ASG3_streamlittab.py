@@ -152,7 +152,7 @@ with tab4:
       if user_truck_input > len(truck_array):
           st.error("Error: Number of trucks exceeds available options")
 
-      user_choose_truck = truck_list[:user_truck_input]
+      user_choose_truck = truck_array[:user_truck_input]
 
       # filter data again to only contain the number of trucks the user choose
       filter_user = filter_df[filter_df['TRUCK_ID'].isin(user_choose_truck)]
