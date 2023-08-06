@@ -41,7 +41,7 @@ def read_csv_from_zipped_github(url):
 
 
 data = load_data()
-github_url = "final_data.zip"
+github_url = "https://github.com/kaylaong883/ASG3_streamlit_tab/blob/5b71f48ae8be27219e360514678c26596359860e/final_data.zip"
 maintable = read_csv_from_zipped_github(github_url)
 
 # Define the app title and favicon
