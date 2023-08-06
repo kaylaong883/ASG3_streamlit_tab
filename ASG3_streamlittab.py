@@ -18,10 +18,10 @@ def load_data():
 
 
 def read_csv_from_zipped_github(url):
-    # Send a GET request to the GitHub URL
+# Send a GET request to the GitHub URL
     response = requests.get(url)
 
-    # Check if the request was successful
+# Check if the request was successful
     if response.status_code == 200:
         # Create a BytesIO object from the response content
         zip_file = io.BytesIO(response.content)
@@ -39,16 +39,10 @@ def read_csv_from_zipped_github(url):
         st.error(f"Failed to retrieve data from {url}. Status code: {response.status_code}")
         return None
 
-def main():
-    st.title("Read CSV from Zipped File on GitHub")
-
-    # Replace the 'github_url' variable with the actual URL of the zipped CSV file on GitHub
-    github_url = "https://github.com/kaylaong883/ASG3_streamlit_tab/blob/main/snowflake_data.zip"
-    df = read_csv_from_zipped_github(github_url)
-
 
 data = load_data()
-maintable = main()
+github_url = "https://github.com/kaylaong883/ASG3_streamlit_tab/blob/main/final_data.zip"
+maintable = read_csv_from_zipped_github(github_url)
 
 # Define the app title and favicon
 st.title('Seasonal Menu Variations') 
