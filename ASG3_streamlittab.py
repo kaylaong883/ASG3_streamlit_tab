@@ -15,11 +15,14 @@ tab1, tab2, tab3, tab4, tab5 = st.tabs(['Prediction A', 'Prediction B', 'Predict
 with tab1:
   #Tab 1 code here
   #Hector/Shahid
+  st.write("Hello")
 with tab2:
   #Tab 2 code here
   #Hector/Shahid
+  st.write("Hello")
 with tab3:
   #Tab 3 code here
+  st.write("Hello")
 
 with tab4:
     import streamlit as st
@@ -172,6 +175,7 @@ with tab4:
 
 with tab5:
   #Tab 5 code here
+  st.write("Hello")
 
 
 
