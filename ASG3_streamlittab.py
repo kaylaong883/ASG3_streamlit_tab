@@ -204,7 +204,24 @@ with tab4:
             
         # Print total sales for all trucks combined
         st.write(f"Total sales for all {len(user_choose_truck)} trucks: ${total_sales_of_trucks:.2f}")
-  
+
+        st.header("Breakdown of Cost for Buying a Food Truck")
+        truck_cost = 50000
+        operating_costs = 1500
+        equipment_costs = 10000
+        liscenses_permit = 28000
+        other_costs = 2000   
+        total_cost = truck_cost + operating_costs + equipment_costs + liscenses_permit + other_costs
+
+        st.write(f"Food Truck Cost: ${truck_cost}")
+        st.write(f"Operating Costs: ${operating_costs} per month")
+        st.write(f"Equipment Costs: ${equipment_costs}")
+        st.write(f"Equipment Costs: ${equipment_costs}")
+        st.write(f"Licenses and Permit Costs: ${liscenses_permit}")
+        st.write(f"Other Costs: ${other_costs}")
+    
+        st.subheader("Total Cost: ${:.2f}".format(total_cost))
+        
       # def get_CITY():
       # city = st.selectbox('Select a City', city_labels)
       # return city
