@@ -346,10 +346,10 @@ with tab4:
           st.write(f"Total sales for truck {truck}: ${total_sales_2022:.2f}")
           total_sales_of_trucks_2022 += total_sales_2022
               
-          # Print total sales for all trucks combined
-          st.subheader(f"Total sales for all {len(truck_avail_2022)} trucks: ${total_sales_of_trucks_2022:.2f}")
-          average_sales_2022 = total_sales_of_trucks_2022 / len(truck_avail_2022)
-          st.subheader(f"Average sales for each truck: ${average_sales_2022:.2f}")
+        # Print total sales for all trucks combined
+        st.subheader(f"Total sales for all {len(truck_avail_2022)} trucks: ${total_sales_of_trucks_2022:.2f}")
+        average_sales_2022 = total_sales_of_trucks_2022 / len(truck_avail_2022)
+        st.subheader(f"Average sales for each truck: ${average_sales_2022:.2f}")
     
 
 
