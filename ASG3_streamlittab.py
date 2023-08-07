@@ -335,20 +335,20 @@ with tab4:
         st.subheader("Total Cost: ${:.2f}".format(total_cost))
 
 
-      # FOR COMPARISON WITH 2022 DATA
-      st.write(maintable)
-      total_sales_of_trucks_2022 = 0
-      truck_avail_2022 = maintable['TRUCK_ID'].unique()
-  
-      for truck in truck_avail_2022:
-        total_sales_2022 = maintable[maintable['TRUCK_ID'] == truck]['TOTAL_SALES_PER_ITEM'].sum()
-        st.write(f"Total sales for truck {truck}: ${total_sales_2022:.2f}")
-        total_sales_of_trucks_2022 += total_sales_2022
-            
-        # Print total sales for all trucks combined
-        st.subheader(f"Total sales for all {len(truck_avail_2022)} trucks: ${total_sales_of_trucks_2022:.2f}")
-        average_sales_2022 = total_sales_of_trucks_2022 / len(truck_avail_2022)
-        st.subheader(f"Average sales for each truck: ${average_sales_2022:.2f}")
+        # FOR COMPARISON WITH 2022 DATA
+        st.write(maintable)
+        total_sales_of_trucks_2022 = 0
+        truck_avail_2022 = maintable['TRUCK_ID'].unique()
+    
+        for truck in truck_avail_2022:
+          total_sales_2022 = maintable[maintable['TRUCK_ID'] == truck]['TOTAL_SALES_PER_ITEM'].sum()
+          st.write(f"Total sales for truck {truck}: ${total_sales_2022:.2f}")
+          total_sales_of_trucks_2022 += total_sales_2022
+              
+          # Print total sales for all trucks combined
+          st.subheader(f"Total sales for all {len(truck_avail_2022)} trucks: ${total_sales_of_trucks_2022:.2f}")
+          average_sales_2022 = total_sales_of_trucks_2022 / len(truck_avail_2022)
+          st.subheader(f"Average sales for each truck: ${average_sales_2022:.2f}")
     
 
 
