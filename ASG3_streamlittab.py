@@ -159,7 +159,15 @@ with tab4:
 
       st.write("Truck numbers:", user_choose_truck)
       if st.button('Predict Sales'):
-        st.write(filter_user)
+        filter_user['VALUE'] = 0
+        filter_user['discount_10%'] = 0
+        truck_list = filter_user['TRUCK_ID']
+        prediction_table = filter_user.drop(columns=['index', 'TOTAL_SALES_PER_ITEM','TRUCK_ID'])
+        
+
+        
+        # join_truck_back = pd.concat([truck_list, prediction_table], axis=1)
+        st.write(prediction_table)
   
       # def get_CITY():
       # city = st.selectbox('Select a City', city_labels)
