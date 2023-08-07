@@ -340,7 +340,18 @@ with tab4:
         # Convert the 'Date' column to datetime format
         df_WO2022['DATE'] = pd.to_datetime(df_WO2022['DATE'])
         df_2021 = df_WO2022[df_WO2022['DATE'].dt.year == 2021]
-        st.write(df_2021)
+
+        filter_rows_2021 = []
+        if truckb_input not in df_2021['TRUCK_BRAND_NAME'].values:
+            st.error(f"Truck brand name '{truckb_input}' not found in the DataFrame.")
+        else:
+            for index, row in df_2021.iterrows():
+                if (season_input in row['SEASON']) and (truckb_input in row['TRUCK_BRAND_NAME']):
+                    filter_rows_2021.append(row)
+          
+        filter_rows_2021 = pd.DataFrame(filter_rows_2021, columns=df_2021.columns)
+        
+        st.write(filter_rows_2021)
 
         # st.header("Breakdown of Cost for Buying a Food Truck")
         # truck_cost = 50000
