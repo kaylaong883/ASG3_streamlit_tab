@@ -312,7 +312,7 @@ with tab4:
             total_sales_of_trucks += total_sales
             
         # Print total sales for all trucks combined
-        st.write(f"Total sales for all {len(user_choose_truck)} trucks: ${total_sales_of_trucks:.2f}")
+        st.write(f"Total sales for all {len(trucks_available)} trucks: ${total_sales_of_trucks:.2f}")
         average_sales = total_sales_of_trucks / len(trucks_available)
         st.write(f"Average sales for each truck: ${average_sales:.2f}")
 
