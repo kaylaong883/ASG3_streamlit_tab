@@ -193,6 +193,17 @@ with tab4:
         output_data['TRUCK_BRAND_NAME'] = output_data['TRUCK_BRAND_NAME'].map(truckb_reverse_mapping)
         output_data['MENU_ITEM_NAME'] = output_data['MENU_ITEM_NAME'].map(menuitem_reverse_mapping)
         st.write(output_data)
+
+        # truck sales for 2022
+        total_sales_of_trucks = 0
+        
+        for truck in user_choose_truck:
+            total_sales = output_data[output_data['TRUCK_ID'] == truck]['TOTAL_SALES_PER_ITEM'].sum()
+            st.write(f"Total sales for truck {truck}: ${total_sales:.2f}")
+            total_sales_of_trucks += total_sales
+            
+        # Print total sales for all trucks combined
+        st.write(f"Total sales for all {len(user_choose_truck)} trucks: ${total_sales_of_trucks:.2f}")
   
       # def get_CITY():
       # city = st.selectbox('Select a City', city_labels)
