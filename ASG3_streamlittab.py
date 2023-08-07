@@ -306,15 +306,13 @@ with tab4:
         
         for truck in trucks_available:
             total_sales = output_data[output_data['TRUCK_ID'] == truck]['PREDICTED_PRICE'].sum()
-            
             st.write(f"Total sales for truck {truck}: ${total_sales:.2f}")
-
             total_sales_of_trucks += total_sales
             
         # Print total sales for all trucks combined
-        st.write(f"Total sales for all {len(trucks_available)} trucks: ${total_sales_of_trucks:.2f}")
+        st.subheader(f"Total sales for all {len(trucks_available)} trucks: ${total_sales_of_trucks:.2f}")
         average_sales = total_sales_of_trucks / len(trucks_available)
-        st.write(f"Average sales for each truck: ${average_sales:.2f}")
+        st.subheader(f"Average sales for each truck: ${average_sales:.2f}")
 
         st.header("Breakdown of Cost for Buying a Food Truck")
         truck_cost = 50000
@@ -335,7 +333,22 @@ with tab4:
         st.write(f"Other Costs: ${other_costs}")
     
         st.subheader("Total Cost: ${:.2f}".format(total_cost))
-          
+
+
+      # FOR COMPARISON WITH 2022 DATA
+      st.write(maintable)
+      total_sales_of_trucks_2022 = 0
+      truck_avail_2022 = maintable['TRUCK_ID'].unique()
+  
+      for truck in truck_avail_2022:
+        total_sales_2022 = maintable[maintable['TRUCK_ID'] == truck]['TOTAL_SALES_PER_ITEM'].sum()
+        st.write(f"Total sales for truck {truck}: ${total_sales_2022:.2f}")
+        total_sales_of_trucks_2022 += total_sales_2022
+            
+        # Print total sales for all trucks combined
+        st.subheader(f"Total sales for all {len(truck_avail_2022)} trucks: ${total_sales_of_trucks_2022:.2f}")
+        average_sales_2022 = total_sales_of_trucks_2022 / len(truck_avail_2022)
+        st.subheader(f"Average sales for each truck: ${average_sales_2022:.2f}")
     
 
 
