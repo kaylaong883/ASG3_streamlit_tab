@@ -198,7 +198,7 @@ with tab4:
         total_sales_of_trucks = 0
         
         for truck in user_choose_truck:
-            total_sales = output_data[output_data['TRUCK_ID'] == truck]['TOTAL_SALES_PER_ITEM'].sum()
+            total_sales = output_data[output_data['TRUCK_ID'] == truck]['PREDICTED_PRICE'].sum()
             st.write(f"Total sales for truck {truck}: ${total_sales:.2f}")
             total_sales_of_trucks += total_sales
             
