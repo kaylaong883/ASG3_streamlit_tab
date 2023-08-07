@@ -268,8 +268,8 @@ with tab4:
       if st.button('Predict Sales'):
         prediction_table['VALUE'] = 0
         prediction_table['discount_10%'] = prediction_table['ITEM_PRICE']
-        truck_list = filter_user['TRUCK_ID']
-        qty_list = filter_user['TOTAL_QTY_SOLD']
+        truck_list = prediction_table['TRUCK_ID'] 
+        qty_list = prediction_table['TOTAL_QTY_SOLD']
         prediction_table = prediction_table.drop(columns=['TRUCK_ID','TOTAL_QTY_SOLD'])
 
         # Change values to numeric for model to predict
