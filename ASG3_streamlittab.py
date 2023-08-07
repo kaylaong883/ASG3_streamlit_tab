@@ -310,11 +310,12 @@ with tab4:
             total_sales_of_trucks += total_sales
             
         # Print total sales for all trucks combined
-        st.subheader(f"Total sales for all {len(trucks_available)} trucks: ${total_sales_of_trucks:.2f}")
+        st.write(f"Total sales for all {len(trucks_available)} trucks: ${total_sales_of_trucks:.2f}")
         average_sales = total_sales_of_trucks / len(trucks_available)
         st.subheader(f"Average sales for each truck: ${average_sales:.2f}")
 
         # FOR COMPARISON WITH 2022 DATA
+        st.header(f"Comparison with 2022 data")
         filter_rows_2022 = []
         for index, row in maintable.iterrows():
           if (season_input in row['SEASON']) & (truckb_input in row['TRUCK_BRAND_NAME']):
@@ -332,11 +333,12 @@ with tab4:
           total_sales_of_trucks_2022 += total_sales_2022
               
         # Print total sales for all trucks combined
-        st.subheader(f"Total sales for all {len(truck_avail_2022)} trucks: ${total_sales_of_trucks_2022:.2f}")
+        st.write(f"Total sales for all {len(truck_avail_2022)} trucks: ${total_sales_of_trucks_2022:.2f}")
         average_sales_2022 = total_sales_of_trucks_2022 / len(truck_avail_2022)
         st.subheader(f"Average sales for each truck: ${average_sales_2022:.2f}")
 
         # FOR COMPARISON WITH 2021 DATA
+        st.header(f"Comparison with 2021 data")
         # Convert the 'Date' column to datetime format
         df_WO2022['DATE'] = pd.to_datetime(df_WO2022['DATE'])
         df_2021 = df_WO2022[df_WO2022['DATE'].dt.year == 2021]
@@ -352,6 +354,18 @@ with tab4:
         filter_rows_2021 = pd.DataFrame(filter_rows_2021, columns=df_2021.columns)
         
         st.write(filter_rows_2021)
+        total_sales_of_trucks_2021 = 0
+        truck_avail_2021 = filter_rows_2021['TRUCK_ID'].unique()
+    
+        for truck in truck_avail_2021:
+          total_sales_2021 = filter_rows_2021[filter_rows_2021['TRUCK_ID'] == truck]['TOTAL_SALES_PER_ITEM'].sum()
+          st.write(f"Total sales for truck {truck}: ${total_sales_2021:.2f}")
+          total_sales_of_trucks_2021 += total_sales_2021
+              
+        # Print total sales for all trucks combined
+        st.write(f"Total sales for all {len(truck_avail_2021)} trucks: ${total_sales_of_trucks_2021:.2f}")
+        average_sales_2021 = total_sales_of_trucks_2021 / len(truck_avail_2021)
+        st.subheader(f"Average sales for each truck: ${average_sales_2021:.2f}")
 
         # st.header("Breakdown of Cost for Buying a Food Truck")
         # truck_cost = 50000
