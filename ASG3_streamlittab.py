@@ -159,7 +159,7 @@ with tab4:
         filter_user['discount_10%'] = 0
         truck_list = filter_user['TRUCK_ID']
         qty_list = filter_user['TOTAL_QTY_SOLD']
-        prediction_table = filter_user.drop(columns=['TOTAL_SALES_PER_ITEM','TRUCK_ID','TOTAL_QTY_SOLD'])
+        prediction_table = filter_user.drop(columns=['TOTAL_SALES_PER_ITEM','TRUCK_ID','TOTAL_QTY_SOLD', 'DATE'])
 
         # Change values to numeric for model to predict
         ## map values to put in dataframe
