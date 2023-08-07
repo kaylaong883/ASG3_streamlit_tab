@@ -137,29 +137,140 @@ with tab4:
           filter_rows.append(row)
           
       filter_df = pd.DataFrame(filter_rows, columns=maintable.columns)
-      
-      # get unique values of trucks for filtered data
-      truck_array = filter_df['TRUCK_ID'].unique()
-      
+
+      filter_df = filter_df.drop(columns=['TOTAL_SALES_PER_ITEM','DATE'])
+
       # user input for number of trucks
-      user_truck_input = st.number_input("Enter the number of trucks you want to implement", min_value=0, max_value=len(truck_array))
+      user_truck_input = st.number_input("Enter the number of trucks you want to implement", min_value=0, max_value=100)
       st.write("No. of trucks:", user_truck_input)
 
-      if user_truck_input > len(truck_array):
-          st.error("Error: Number of trucks exceeds available options")
+      # GENERATE RECORD FOR NEW TRUCKS
+      # Initialize an empty list to store generated data
+      data = []
+      
+      # List of possible options
+      location = filter_df['LOCATION_ID'].unique()
+      
+      min_quantity = filter_df['TOTAL_QTY_SOLD'].min()
+      max_quantity = filter_df['TOTAL_QTY_SOLD'].max()
+      
+      shift_no = filter_df['SHIFT_NUMBER'].unique()
+      
+      city = filter_df['CITY'].unique()
+      
+      subcat = filter_df['SUBCATEGORY'].unique()
+      
+      menu_type = filter_df['MENU_TYPE'].unique()
+      
+      min_air = filter_df['AVG_TEMPERATURE_AIR_2M_F'].min()
+      max_air = filter_df['AVG_TEMPERATURE_AIR_2M_F'].max()
+      
+      min_wb = filter_df['AVG_TEMPERATURE_WETBULB_2M_F'].min()
+      max_wb = filter_df['AVG_TEMPERATURE_WETBULB_2M_F'].max()
+      
+      min_dp = filter_df['AVG_TEMPERATURE_DEWPOINT_2M_F'].min()
+      max_dp = filter_df['AVG_TEMPERATURE_DEWPOINT_2M_F'].max()
+      
+      min_wc = filter_df['AVG_TEMPERATURE_WINDCHILL_2M_F'].min()
+      max_wc = filter_df['AVG_TEMPERATURE_WINDCHILL_2M_F'].max()
+      
+      min_ws = filter_df['AVG_WIND_SPEED_100M_MPH'].min()
+      max_ws = filter_df['AVG_WIND_SPEED_100M_MPH'].max()
+      
+      
+      # Initialize an empty dictionary to store item details
+      item_details = {}
+      
+      for index, row in filter_df.iterrows():
+          menu_item_name = row['MENU_ITEM_NAME']
+          item_category = row['ITEM_CATEGORY']
+          cost_of_goods = row['COG_PER_ITEM_USD']
+          item_price = row['ITEM_PRICE']
+      
+          item_details[menu_item_name] = {
+              'ITEM_CATEGORY': item_category,
+              'COG_PER_ITEM_USD': cost_of_goods,
+              'ITEM_PRICE': item_price
+          }
+          
+      
+      for user in range(user_truck_input):
+          TRUCK_ID = user + 101  # Starting truck ID for each user
+      
+          # Generate 300 rows of data
+          for i in range(300):
+      
+              LOCATION_ID = np.random.choice(location)
+      
+              TOTAL_QTY_SOLD = np.random.randint(min_quantity, max_quantity + 1)
+              
+              SHIFT_NUMBER = np.random.choice(shift_no)
+              
+              CITY = np.random.choice(city)
+              
+              SUBCATEGORY = np.random.choice(subcat)
+              
+              MENU_TYPE = np.random.choice(menu_type)
+              
+              TRUCK_BRAND_NAME = truckb_input
+              
+              AVG_TEMPERATURE_AIR_2M_F = np.random.randint(min_air, max_air + 1)
+              
+              AVG_TEMPERATURE_WETBULB_2M_F = np.random.randint(min_wb, max_wb + 1)
+              
+              AVG_TEMPERATURE_DEWPOINT_2M_F = np.random.randint(min_dp, max_dp + 1)
+              
+              AVG_TEMPERATURE_WINDCHILL_2M_F = np.random.randint(min_wc, max_wc + 1)
+              
+              AVG_WIND_SPEED_100M_MPH = np.random.randint(min_ws, max_ws + 1)
+              
+              SEASON = season_input
+      
+              MENU_ITEM_NAME = np.random.choice(filter_df['MENU_ITEM_NAME'])
+              ITEM_CATEGORY = item_details[MENU_ITEM_NAME]['ITEM_CATEGORY']
+              COG_PER_ITEM_USD = item_details[MENU_ITEM_NAME]['COG_PER_ITEM_USD']
+              ITEM_PRICE = item_details[MENU_ITEM_NAME]['ITEM_PRICE']
+              
+              VALUE = 0
+              
+              DISCOUNT = ITEM_PRICE
+      
+              data.append({
+                  'LOCATION_ID':LOCATION_ID,
+                  'TRUCK_ID':TRUCK_ID,
+                  'TOTAL_QTY_SOLD':TOTAL_QTY_SOLD,
+                  'SHIFT_NUMBER':SHIFT_NUMBER,
+                  'CITY':CITY,
+                  'ITEM_CATEGORY': ITEM_CATEGORY,
+                  'SUBCATEGORY':SUBCATEGORY,
+                  'MENU_TYPE':MENU_TYPE,
+                  'TRUCK_BRAND_NAME':TRUCK_BRAND_NAME,
+                  'MENU_ITEM_NAME': MENU_ITEM_NAME,
+                  'AVG_TEMPERATURE_AIR_2M_F':AVG_TEMPERATURE_AIR_2M_F,
+                  'AVG_TEMPERATURE_WETBULB_2M_F':AVG_TEMPERATURE_WETBULB_2M_F,
+                  'AVG_TEMPERATURE_DEWPOINT_2M_F':AVG_TEMPERATURE_DEWPOINT_2M_F,
+                  'AVG_TEMPERATURE_WINDCHILL_2M_F':AVG_TEMPERATURE_WINDCHILL_2M_F,
+                  'AVG_WIND_SPEED_100M_MPH':AVG_WIND_SPEED_100M_MPH,
+                  'SEASON':SEASON,
+                  'COG_PER_ITEM_USD':COG_PER_ITEM_USD,
+                  'ITEM_PRICE': ITEM_PRICE,
+                  'VALUE':VALUE,
+                  'DISCOUNT':DISCOUNT
+              })
+      
+      # Create a DataFrame from the generated data
+      df_generated = pd.DataFrame(data)
 
-      user_choose_truck = truck_array[:user_truck_input]
+      # JOIN filter_df and df_generated
+      frames = [filter_df, df_generated]
+      prediction_table = pd.concat(frames)
 
-      # filter data again to only contain the number of trucks the user choose
-      filter_user = filter_df[filter_df['TRUCK_ID'].isin(user_choose_truck)]
-
-      st.write("Truck numbers:", user_choose_truck)
       if st.button('Predict Sales'):
-        filter_user['VALUE'] = 0
-        filter_user['discount_10%'] = 0
+        prediction_table['VALUE'] = 0
+        prediction_table['discount_10%'] = prediction_table['ITEM_PRICE']
         truck_list = filter_user['TRUCK_ID']
         qty_list = filter_user['TOTAL_QTY_SOLD']
-        prediction_table = filter_user.drop(columns=['TOTAL_SALES_PER_ITEM','TRUCK_ID','TOTAL_QTY_SOLD', 'DATE'])
+        prediction_table = prediction_table.drop(columns=['TRUCK_ID','TOTAL_QTY_SOLD'])
 
         # Change values to numeric for model to predict
         ## map values to put in dataframe
@@ -191,14 +302,19 @@ with tab4:
 
         # truck sales for 2022
         total_sales_of_trucks = 0
+        trucks_available = output_data['TRUCK_ID'].unique()
         
-        for truck in user_choose_truck:
+        for truck in trucks_available:
             total_sales = output_data[output_data['TRUCK_ID'] == truck]['PREDICTED_PRICE'].sum()
+            
             st.write(f"Total sales for truck {truck}: ${total_sales:.2f}")
+
             total_sales_of_trucks += total_sales
             
         # Print total sales for all trucks combined
         st.write(f"Total sales for all {len(user_choose_truck)} trucks: ${total_sales_of_trucks:.2f}")
+        average_sales = total_sales_of_trucks / len(trucks_available)
+        st.write(f"Average sales for each truck: ${average_sales:.2f}")
 
         st.header("Breakdown of Cost for Buying a Food Truck")
         truck_cost = 50000
