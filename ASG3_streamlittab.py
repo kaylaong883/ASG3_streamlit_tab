@@ -337,6 +337,8 @@ with tab4:
         st.subheader(f"Average sales for each truck: ${average_sales_2022:.2f}")
 
         # FOR COMPARISON WITH 2021 DATA
+        # Convert the 'Date' column to datetime format
+        df_WO2022['DATE'] = pd.to_datetime(df_WO2022['DATE'])
         df_2021 = df_WO2022[df_WO2022['DATE'].dt.year == 2021]
         st.write(df_2021)
 
