@@ -345,10 +345,10 @@ with tab4:
         
         st.write(filter_rows_2022)
         total_sales_of_trucks_2022 = 0
-        truck_avail_2022 = maintable['TRUCK_ID'].unique()
+        truck_avail_2022 = filter_rows_2022['TRUCK_ID'].unique()
     
         for truck in truck_avail_2022:
-          total_sales_2022 = maintable[maintable['TRUCK_ID'] == truck]['TOTAL_SALES_PER_ITEM'].sum()
+          total_sales_2022 = filter_rows_2022[filter_rows_2022['TRUCK_ID'] == truck]['TOTAL_SALES_PER_ITEM'].sum()
           st.write(f"Total sales for truck {truck}: ${total_sales_2022:.2f}")
           total_sales_of_trucks_2022 += total_sales_2022
               
