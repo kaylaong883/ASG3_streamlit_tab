@@ -336,8 +336,14 @@ with tab4:
 
 
         # FOR COMPARISON WITH 2022 DATA
-        st.write(f"PRINT LAH DOG")
-        st.write(maintable)
+        filter_rows_2022 = []
+        for index, row in maintable.iterrows():
+          if (season_input in row['SEASON']) & (truckb_input in row['TRUCK_BRAND_NAME']):
+            filter_rows_2022.append(row)
+          
+        filter_rows_2022 = pd.DataFrame(filter_rows_2022, columns=maintable.columns)
+        
+        st.write(filter_rows_2022)
         total_sales_of_trucks_2022 = 0
         truck_avail_2022 = maintable['TRUCK_ID'].unique()
     
