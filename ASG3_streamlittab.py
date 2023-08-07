@@ -255,7 +255,7 @@ with tab4:
                   'COG_PER_ITEM_USD':COG_PER_ITEM_USD,
                   'ITEM_PRICE': ITEM_PRICE,
                   'VALUE':VALUE,
-                  'DISCOUNT':DISCOUNT
+                  'discount_10%':DISCOUNT
               })
       
       # Create a DataFrame from the generated data
