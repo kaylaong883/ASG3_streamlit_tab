@@ -197,8 +197,8 @@ with tab4:
       for user in range(user_truck_input):
           TRUCK_ID = user + 101  # Starting truck ID for each user
       
-          # Generate 300 rows of data
-          for i in range(300):
+          # Generate 700 rows of data
+          for i in range(700):
       
               LOCATION_ID = np.random.choice(location)
       
@@ -214,15 +214,15 @@ with tab4:
               
               TRUCK_BRAND_NAME = truckb_input
               
-              AVG_TEMPERATURE_AIR_2M_F = np.random.randint(min_air + 50, max_air + 1)
+              AVG_TEMPERATURE_AIR_2M_F = np.random.randint(min_air, max_air + 1)
               
-              AVG_TEMPERATURE_WETBULB_2M_F = np.random.randint(min_wb + 50 , max_wb + 1)
+              AVG_TEMPERATURE_WETBULB_2M_F = np.random.randint(min_wb , max_wb + 1)
               
-              AVG_TEMPERATURE_DEWPOINT_2M_F = np.random.randint(min_dp + 50, max_dp + 1)
+              AVG_TEMPERATURE_DEWPOINT_2M_F = np.random.randint(min_dp, max_dp + 1)
               
-              AVG_TEMPERATURE_WINDCHILL_2M_F = np.random.randint(min_wc + 50, max_wc + 1)
+              AVG_TEMPERATURE_WINDCHILL_2M_F = np.random.randint(min_wc, max_wc + 1)
               
-              AVG_WIND_SPEED_100M_MPH = np.random.randint(min_ws + 10, max_ws + 1)
+              AVG_WIND_SPEED_100M_MPH = np.random.randint(min_ws, max_ws + 1)
               
               SEASON = season_input
       
@@ -314,27 +314,6 @@ with tab4:
         average_sales = total_sales_of_trucks / len(trucks_available)
         st.subheader(f"Average sales for each truck: ${average_sales:.2f}")
 
-        st.header("Breakdown of Cost for Buying a Food Truck")
-        truck_cost = 50000
-        operating_costs = 1500
-        equipment_costs = 10000
-        liscenses_permit = 28000
-        other_costs = 2000
-        output_data['cog'] = output_data['TOTAL_QTY_SOLD'] * output_data['COG_PER_ITEM_USD']
-        cog = output_data['cog'].sum()
-        total_cost = truck_cost + operating_costs + equipment_costs + liscenses_permit + other_costs + cog
-
-        st.write(f"Food Truck Cost: ${truck_cost}")
-        st.write(f"Operating Costs: ${operating_costs} per month")
-        st.write(f"Equipment Costs: ${equipment_costs}")
-        st.write(f"Equipment Costs: ${equipment_costs}")
-        st.write(f"Licenses and Permit Costs: ${liscenses_permit}")
-        st.write(f"Costs of Goods: ${cog}")
-        st.write(f"Other Costs: ${other_costs}")
-    
-        st.subheader("Total Cost: ${:.2f}".format(total_cost))
-
-
         # FOR COMPARISON WITH 2022 DATA
         filter_rows_2022 = []
         for index, row in maintable.iterrows():
@@ -356,6 +335,26 @@ with tab4:
         st.subheader(f"Total sales for all {len(truck_avail_2022)} trucks: ${total_sales_of_trucks_2022:.2f}")
         average_sales_2022 = total_sales_of_trucks_2022 / len(truck_avail_2022)
         st.subheader(f"Average sales for each truck: ${average_sales_2022:.2f}")
+
+        # st.header("Breakdown of Cost for Buying a Food Truck")
+        # truck_cost = 50000
+        # operating_costs = 1500
+        # equipment_costs = 10000
+        # liscenses_permit = 28000
+        # other_costs = 2000
+        # output_data['cog'] = output_data['TOTAL_QTY_SOLD'] * output_data['COG_PER_ITEM_USD']
+        # cog = output_data['cog'].sum()
+        # total_cost = truck_cost + operating_costs + equipment_costs + liscenses_permit + other_costs + cog
+
+        # st.write(f"Food Truck Cost: ${truck_cost}")
+        # st.write(f"Operating Costs: ${operating_costs} per month")
+        # st.write(f"Equipment Costs: ${equipment_costs}")
+        # st.write(f"Equipment Costs: ${equipment_costs}")
+        # st.write(f"Licenses and Permit Costs: ${liscenses_permit}")
+        # st.write(f"Costs of Goods: ${cog}")
+        # st.write(f"Other Costs: ${other_costs}")
+    
+        # st.subheader("Total Cost: ${:.2f}".format(total_cost))
     
 
 
