@@ -158,7 +158,8 @@ with tab4:
       filter_user = filter_df[filter_df['TRUCK_ID'].isin(user_choose_truck)]
 
       st.write("Truck numbers:", user_choose_truck)
-      st.write(filter_user)
+      if st.button('Predict Sales'):
+        st.write(filter_user)
   
       # def get_CITY():
       # city = st.selectbox('Select a City', city_labels)
@@ -167,10 +168,6 @@ with tab4:
       # city_input = get_CITY()
       # city_int = city_mapping[city_input]
           
-
-
-      # PRINT TABLE
-      # st.write(maintable)
     
 
 
