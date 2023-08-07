@@ -214,15 +214,15 @@ with tab4:
               
               TRUCK_BRAND_NAME = truckb_input
               
-              AVG_TEMPERATURE_AIR_2M_F = np.random.randint(min_air + 40, max_air + 1)
+              AVG_TEMPERATURE_AIR_2M_F = np.random.randint(min_air + 70, max_air + 1)
               
-              AVG_TEMPERATURE_WETBULB_2M_F = np.random.randint(min_wb + 40 , max_wb + 1)
+              AVG_TEMPERATURE_WETBULB_2M_F = np.random.randint(min_wb + 70 , max_wb + 1)
               
-              AVG_TEMPERATURE_DEWPOINT_2M_F = np.random.randint(min_dp + 40, max_dp + 1)
+              AVG_TEMPERATURE_DEWPOINT_2M_F = np.random.randint(min_dp + 70, max_dp + 1)
               
-              AVG_TEMPERATURE_WINDCHILL_2M_F = np.random.randint(min_wc + 40, max_wc + 1)
+              AVG_TEMPERATURE_WINDCHILL_2M_F = np.random.randint(min_wc + 70, max_wc + 1)
               
-              AVG_WIND_SPEED_100M_MPH = np.random.randint(min_ws + 5, max_ws + 1)
+              AVG_WIND_SPEED_100M_MPH = np.random.randint(min_ws + 10, max_ws + 1)
               
               SEASON = season_input
       
