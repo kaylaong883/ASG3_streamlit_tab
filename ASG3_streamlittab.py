@@ -162,8 +162,7 @@ with tab4:
         filter_user['VALUE'] = 0
         filter_user['discount_10%'] = 0
         truck_list = filter_user['TRUCK_ID']
-        prediction_table = filter_user.drop(columns=['index', 'TOTAL_SALES_PER_ITEM','TRUCK_ID'])
-        
+        prediction_table = filter_user.drop(columns=['TOTAL_SALES_PER_ITEM','TRUCK_ID'])
 
         
         # join_truck_back = pd.concat([truck_list, prediction_table], axis=1)
