@@ -285,63 +285,64 @@ with tab4:
 
         input_data = column_names
         input_df = prediction_table
-        prediction = xgbr_gs.predict(input_df)
-        output_data = pd.DataFrame(input_df, columns = input_df.columns)
-        output_data['PREDICTED_PRICE'] = prediction 
+        st.write(input_df)
+      #   prediction = xgbr_gs.predict(input_df)
+      #   output_data = pd.DataFrame(input_df, columns = input_df.columns)
+      #   output_data['PREDICTED_PRICE'] = prediction 
         
-        output_data = pd.concat([truck_list, qty_list, output_data], axis=1)
+      #   output_data = pd.concat([truck_list, qty_list, output_data], axis=1)
 
-        output_data['SEASON'] = output_data['SEASON'].map(season_reverse_mapping)
-        output_data['CITY'] = output_data['CITY'].map(city_reverse_mapping)
-        output_data['ITEM_CATEGORY'] = output_data['ITEM_CATEGORY'].map(itemcat_reverse_mapping)
-        output_data['MENU_TYPE'] = output_data['MENU_TYPE'].map(menut_reverse_mapping)
-        output_data['TRUCK_BRAND_NAME'] = output_data['TRUCK_BRAND_NAME'].map(truckb_reverse_mapping)
-        output_data['MENU_ITEM_NAME'] = output_data['MENU_ITEM_NAME'].map(menuitem_reverse_mapping)
+      #   output_data['SEASON'] = output_data['SEASON'].map(season_reverse_mapping)
+      #   output_data['CITY'] = output_data['CITY'].map(city_reverse_mapping)
+      #   output_data['ITEM_CATEGORY'] = output_data['ITEM_CATEGORY'].map(itemcat_reverse_mapping)
+      #   output_data['MENU_TYPE'] = output_data['MENU_TYPE'].map(menut_reverse_mapping)
+      #   output_data['TRUCK_BRAND_NAME'] = output_data['TRUCK_BRAND_NAME'].map(truckb_reverse_mapping)
+      #   output_data['MENU_ITEM_NAME'] = output_data['MENU_ITEM_NAME'].map(menuitem_reverse_mapping)
         
-        st.write(output_data)
+      #   st.write(output_data)
 
-        # truck sales for 2022
-        total_sales_of_trucks = 0
-        trucks_available = output_data['TRUCK_ID'].unique()
+      #   # truck sales for 2022
+      #   total_sales_of_trucks = 0
+      #   trucks_available = output_data['TRUCK_ID'].unique()
         
-        for truck in trucks_available:
-            total_sales = output_data[output_data['TRUCK_ID'] == truck]['PREDICTED_PRICE'].sum()
+      #   for truck in trucks_available:
+      #       total_sales = output_data[output_data['TRUCK_ID'] == truck]['PREDICTED_PRICE'].sum()
             
-            st.write(f"Total sales for truck {truck}: ${total_sales:.2f}")
+      #       st.write(f"Total sales for truck {truck}: ${total_sales:.2f}")
 
-            total_sales_of_trucks += total_sales
+      #       total_sales_of_trucks += total_sales
             
-        # Print total sales for all trucks combined
-        st.write(f"Total sales for all {len(user_choose_truck)} trucks: ${total_sales_of_trucks:.2f}")
-        average_sales = total_sales_of_trucks / len(trucks_available)
-        st.write(f"Average sales for each truck: ${average_sales:.2f}")
+      #   # Print total sales for all trucks combined
+      #   st.write(f"Total sales for all {len(user_choose_truck)} trucks: ${total_sales_of_trucks:.2f}")
+      #   average_sales = total_sales_of_trucks / len(trucks_available)
+      #   st.write(f"Average sales for each truck: ${average_sales:.2f}")
 
-        st.header("Breakdown of Cost for Buying a Food Truck")
-        truck_cost = 50000
-        operating_costs = 1500
-        equipment_costs = 10000
-        liscenses_permit = 28000
-        other_costs = 2000
-        output_data['cog'] = output_data['TOTAL_QTY_SOLD'] * output_data['COG_PER_ITEM_USD']
-        cog = output_data['cog'].sum()
-        total_cost = truck_cost + operating_costs + equipment_costs + liscenses_permit + other_costs + cog
+      #   st.header("Breakdown of Cost for Buying a Food Truck")
+      #   truck_cost = 50000
+      #   operating_costs = 1500
+      #   equipment_costs = 10000
+      #   liscenses_permit = 28000
+      #   other_costs = 2000
+      #   output_data['cog'] = output_data['TOTAL_QTY_SOLD'] * output_data['COG_PER_ITEM_USD']
+      #   cog = output_data['cog'].sum()
+      #   total_cost = truck_cost + operating_costs + equipment_costs + liscenses_permit + other_costs + cog
 
-        st.write(f"Food Truck Cost: ${truck_cost}")
-        st.write(f"Operating Costs: ${operating_costs} per month")
-        st.write(f"Equipment Costs: ${equipment_costs}")
-        st.write(f"Equipment Costs: ${equipment_costs}")
-        st.write(f"Licenses and Permit Costs: ${liscenses_permit}")
-        st.write(f"Costs of Goods: ${cog}")
-        st.write(f"Other Costs: ${other_costs}")
+      #   st.write(f"Food Truck Cost: ${truck_cost}")
+      #   st.write(f"Operating Costs: ${operating_costs} per month")
+      #   st.write(f"Equipment Costs: ${equipment_costs}")
+      #   st.write(f"Equipment Costs: ${equipment_costs}")
+      #   st.write(f"Licenses and Permit Costs: ${liscenses_permit}")
+      #   st.write(f"Costs of Goods: ${cog}")
+      #   st.write(f"Other Costs: ${other_costs}")
     
-        st.subheader("Total Cost: ${:.2f}".format(total_cost))
+      #   st.subheader("Total Cost: ${:.2f}".format(total_cost))
         
-      # def get_CITY():
-      # city = st.selectbox('Select a City', city_labels)
-      # return city
+      # # def get_CITY():
+      # # city = st.selectbox('Select a City', city_labels)
+      # # return city
           
-      # city_input = get_CITY()
-      # city_int = city_mapping[city_input]
+      # # city_input = get_CITY()
+      # # city_int = city_mapping[city_input]
           
     
 
