@@ -185,6 +185,13 @@ with tab4:
         output_data['PREDICTED_PRICE'] = prediction 
         
         output_data = pd.concat([truck_list, output_data], axis=1)
+
+        output_data['SEASON'] = output_data['SEASON'].map(season_reverse_mapping)
+        output_data['CITY'] = output_data['CITY'].map(city_reverse_mapping)
+        output_data['ITEM_CATEGORY'] = output_data['ITEM_CATEGORY'].map(itemcat_reverse_mapping)
+        output_data['MENU_TYPE'] = output_data['MENU_TYPE'].map(menut_reverse_mapping)
+        output_data['TRUCK_BRAND_NAME'] = output_data['TRUCK_BRAND_NAME'].map(truckb_reverse_mapping)
+        output_data['MENU_ITEM_NAME'] = output_data['MENU_ITEM_NAME'].map(menuitem_reverse_mapping)
         st.write(output_data)
   
       # def get_CITY():
