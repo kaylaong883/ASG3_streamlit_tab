@@ -59,8 +59,8 @@ with tab4:
               st.error(f"Failed to retrieve data from {url}. Status code: {response.status_code}")
               return None
       
-      # github_url = "https://github.com/kaylaong883/ASG3_streamlit_tab/raw/main/y2022_data_withtid.zip"
-      # maintable = read_csv_from_zipped_github(github_url)
+      github_url_WO2022 = "https://github.com/kaylaong883/ASG3_streamlit_tab/raw/main/woy2022_data.zip"
+      df_WO2022 = read_csv_from_zipped_github(github_url_WO2022)
       github_url = "https://github.com/kaylaong883/ASG3_streamlit_tab/raw/main/y2022_qty_data.zip"
       maintable = read_csv_from_zipped_github(github_url)
 
@@ -335,6 +335,10 @@ with tab4:
         st.subheader(f"Total sales for all {len(truck_avail_2022)} trucks: ${total_sales_of_trucks_2022:.2f}")
         average_sales_2022 = total_sales_of_trucks_2022 / len(truck_avail_2022)
         st.subheader(f"Average sales for each truck: ${average_sales_2022:.2f}")
+
+        # FOR COMPARISON WITH 2021 DATA
+        df_2021 = df_WO2022[df_WO2022['DATE'].dt.year == 2021]
+        st.write(df_2021)
 
         # st.header("Breakdown of Cost for Buying a Food Truck")
         # truck_cost = 50000
