@@ -29,8 +29,8 @@ with tab4:
       import pandas as pd
       import numpy as np
       import pydeck as pdk
-      #import joblib
-      #from joblib import load
+      import joblib
+      from joblib import load
       import pickle
       from xgboost import XGBRegressor 
       import requests
@@ -70,7 +70,10 @@ with tab4:
       data = load_data()
       github_url = "https://github.com/kaylaong883/ASG3_streamlit_tab/raw/main/y2022_data_withtid.zip"
       maintable = read_csv_from_zipped_github(github_url)
-      
+
+      with open('xgbr_gs.pkl', 'rb') as file:
+        xgbr_gs = joblib.load(file)
+        
       # Define the app title and favicon
       st.title('Seasonal Menu Variations') 
       st.subheader('Predict')
@@ -164,9 +167,26 @@ with tab4:
         truck_list = filter_user['TRUCK_ID']
         prediction_table = filter_user.drop(columns=['TOTAL_SALES_PER_ITEM','TRUCK_ID'])
 
+        # Change values to numeric for model to predict
+        ## map values to put in dataframe
+        prediction_table['SEASON'] = prediction_table['SEASON'].map(season_mapping)
+        prediction_table['CITY'] = prediction_table['CITY'].map(city_mapping)
+        prediction_table['ITEM_CATEGORY'] = prediction_table['ITEM_CATEGORY'].map(itemcat_mapping)
+        prediction_table['MENU_TYPE'] = prediction_table['MENU_TYPE'].map(menut_mapping)
+        prediction_table['TRUCK_BRAND_NAME'] = prediction_table['TRUCK_BRAND_NAME'].map(truckb_mapping)
+        prediction_table['MENU_ITEM_NAME'] = prediction_table['MENU_ITEM_NAME'].map(menuitem_mapping)
+        column_names = []
+        column_names = prediction_table.columns.tolist()
+
+        input_data = column_names
+        input_df = prediction_table
+        prediction = xgbr_gs.predict(input_df)
+        output_data = pd.DataFrame(input_df, columns = input_df.columns)
+        output_data['PREDICTED_PRICE'] = prediction 
+        st.write(output_data)
         
         # join_truck_back = pd.concat([truck_list, prediction_table], axis=1)
-        st.write(prediction_table)
+        # st.write(prediction_table)
   
       # def get_CITY():
       # city = st.selectbox('Select a City', city_labels)
