@@ -214,13 +214,13 @@ with tab4:
               
               TRUCK_BRAND_NAME = truckb_input
               
-              AVG_TEMPERATURE_AIR_2M_F = np.random.randint(min_air + 55, max_air + 1)
+              AVG_TEMPERATURE_AIR_2M_F = np.random.randint(min_air + 50, max_air + 1)
               
               AVG_TEMPERATURE_WETBULB_2M_F = np.random.randint(min_wb + 50 , max_wb + 1)
               
-              AVG_TEMPERATURE_DEWPOINT_2M_F = np.random.randint(min_dp + 55, max_dp + 1)
+              AVG_TEMPERATURE_DEWPOINT_2M_F = np.random.randint(min_dp + 50, max_dp + 1)
               
-              AVG_TEMPERATURE_WINDCHILL_2M_F = np.random.randint(min_wc + 55, max_wc + 1)
+              AVG_TEMPERATURE_WINDCHILL_2M_F = np.random.randint(min_wc + 50, max_wc + 1)
               
               AVG_WIND_SPEED_100M_MPH = np.random.randint(min_ws + 10, max_ws + 1)
               
