@@ -183,10 +183,9 @@ with tab4:
         prediction = xgbr_gs.predict(input_df)
         output_data = pd.DataFrame(input_df, columns = input_df.columns)
         output_data['PREDICTED_PRICE'] = prediction 
-        st.write(output_data)
         
-        # join_truck_back = pd.concat([truck_list, prediction_table], axis=1)
-        # st.write(prediction_table)
+        output_data = pd.concat([truck_list, output_data], axis=1)
+        st.write(output_data)
   
       # def get_CITY():
       # city = st.selectbox('Select a City', city_labels)
