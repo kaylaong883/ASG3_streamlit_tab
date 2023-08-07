@@ -216,7 +216,7 @@ with tab4:
               
               AVG_TEMPERATURE_AIR_2M_F = np.random.randint(min_air + 55, max_air + 1)
               
-              AVG_TEMPERATURE_WETBULB_2M_F = np.random.randint(min_wb + 55 , max_wb + 1)
+              AVG_TEMPERATURE_WETBULB_2M_F = np.random.randint(min_wb + 50 , max_wb + 1)
               
               AVG_TEMPERATURE_DEWPOINT_2M_F = np.random.randint(min_dp + 55, max_dp + 1)
               
