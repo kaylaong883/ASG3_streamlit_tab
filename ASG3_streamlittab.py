@@ -37,13 +37,6 @@ with tab4:
       import zipfile
       import io
       
-      @st.cache_data
-      def load_data():
-          # First load the original airbnb listtings dataset
-          data = pd.read_csv("final_data_noscaler.csv") #use this for the original dataset, before transformations and cleaning
-          return data
-      
-      
       def read_csv_from_zipped_github(url):
       # Send a GET request to the GitHub URL
           response = requests.get(url)
@@ -66,9 +59,9 @@ with tab4:
               st.error(f"Failed to retrieve data from {url}. Status code: {response.status_code}")
               return None
       
-      
-      data = load_data()
-      github_url = "https://github.com/kaylaong883/ASG3_streamlit_tab/raw/main/y2022_data_withtid.zip"
+      # github_url = "https://github.com/kaylaong883/ASG3_streamlit_tab/raw/main/y2022_data_withtid.zip"
+      # maintable = read_csv_from_zipped_github(github_url)
+      github_url = "https://github.com/kaylaong883/ASG3_streamlit_tab/raw/main/y2022_qty_data.zip"
       maintable = read_csv_from_zipped_github(github_url)
 
       with open('xgbr_gs.pkl', 'rb') as file:
@@ -144,7 +137,7 @@ with tab4:
           filter_rows.append(row)
           
       filter_df = pd.DataFrame(filter_rows, columns=maintable.columns)
-
+      
       # get unique values of trucks for filtered data
       truck_array = filter_df['TRUCK_ID'].unique()
       
@@ -165,7 +158,8 @@ with tab4:
         filter_user['VALUE'] = 0
         filter_user['discount_10%'] = 0
         truck_list = filter_user['TRUCK_ID']
-        prediction_table = filter_user.drop(columns=['TOTAL_SALES_PER_ITEM','TRUCK_ID'])
+        qty_list = filter_user['TOTAL_QTY_SOLD']
+        prediction_table = filter_user.drop(columns=['TOTAL_SALES_PER_ITEM','TRUCK_ID','TOTAL_QTY_SOLD'])
 
         # Change values to numeric for model to predict
         ## map values to put in dataframe
@@ -184,7 +178,7 @@ with tab4:
         output_data = pd.DataFrame(input_df, columns = input_df.columns)
         output_data['PREDICTED_PRICE'] = prediction 
         
-        output_data = pd.concat([truck_list, output_data], axis=1)
+        output_data = pd.concat([truck_list, qty_list, output_data], axis=1)
 
         output_data['SEASON'] = output_data['SEASON'].map(season_reverse_mapping)
         output_data['CITY'] = output_data['CITY'].map(city_reverse_mapping)
@@ -192,6 +186,7 @@ with tab4:
         output_data['MENU_TYPE'] = output_data['MENU_TYPE'].map(menut_reverse_mapping)
         output_data['TRUCK_BRAND_NAME'] = output_data['TRUCK_BRAND_NAME'].map(truckb_reverse_mapping)
         output_data['MENU_ITEM_NAME'] = output_data['MENU_ITEM_NAME'].map(menuitem_reverse_mapping)
+        
         st.write(output_data)
 
         # truck sales for 2022
@@ -210,14 +205,16 @@ with tab4:
         operating_costs = 1500
         equipment_costs = 10000
         liscenses_permit = 28000
-        other_costs = 2000   
-        total_cost = truck_cost + operating_costs + equipment_costs + liscenses_permit + other_costs
+        other_costs = 2000
+        cog = output_data['TOTAL_QTY_SOLD'] * output_data['COG_PER_ITEM_USD']
+        total_cost = truck_cost + operating_costs + equipment_costs + liscenses_permit + other_costs + cog
 
         st.write(f"Food Truck Cost: ${truck_cost}")
         st.write(f"Operating Costs: ${operating_costs} per month")
         st.write(f"Equipment Costs: ${equipment_costs}")
         st.write(f"Equipment Costs: ${equipment_costs}")
         st.write(f"Licenses and Permit Costs: ${liscenses_permit}")
+        st.write(f"Costs of Goods: ${cog}")
         st.write(f"Other Costs: ${other_costs}")
     
         st.subheader("Total Cost: ${:.2f}".format(total_cost))
