@@ -336,6 +336,7 @@ with tab4:
 
 
         # FOR COMPARISON WITH 2022 DATA
+        st.subheader("PRINT LAH DOG")
         st.write(maintable)
         total_sales_of_trucks_2022 = 0
         truck_avail_2022 = maintable['TRUCK_ID'].unique()
