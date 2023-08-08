@@ -304,16 +304,27 @@ with tab4:
         # truck sales for 2022
         total_sales_of_trucks = 0
         trucks_available = output_data['TRUCK_ID'].unique()
+
+        # Create a list to hold truck information
+        truck_info = []
         
         for truck in trucks_available:
-            total_sales = output_data[output_data['TRUCK_ID'] == truck]['PREDICTED_PRICE'].sum()
-            st.write(f"Total sales for truck {truck}: ${total_sales:.2f}")
-            total_sales_of_trucks += total_sales
-            
+            total_sales = output_data[output_data['TRUCK_ID'] == truck]['TOTAL_SALES_PER_ITEM'].sum()
+            truck_info.append({'Truck': truck, 'Total Sales': total_sales})
+        
+        # Display truck information in a table
+        st.table(pd.DataFrame(truck_info))
+        
+        # Calculate total and average sales
+        total_sales_of_trucks = sum(info['Total Sales'] for info in truck_info)
+        average_sales = total_sales_of_trucks / len(trucks_available)
+        
         # Print total sales for all trucks combined
         st.write(f"Total sales for all {len(trucks_available)} trucks: ${total_sales_of_trucks:.2f}")
-        average_sales = total_sales_of_trucks / len(trucks_available)
+        
+        # Display average sales
         st.subheader(f"Average sales for each truck: ${average_sales:.2f}")
+
 
         # FOR COMPARISON WITH 2022 DATA
         st.header(f"Comparison with 2022 data")
@@ -325,34 +336,22 @@ with tab4:
         filter_rows_2022 = pd.DataFrame(filter_rows_2022, columns=maintable.columns)
         
         st.write(filter_rows_2022)
-        # total_sales_of_trucks_2022 = 0
-        # truck_avail_2022 = filter_rows_2022['TRUCK_ID'].unique()
-    
-        # for truck in truck_avail_2022:
-        #   total_sales_2022 = filter_rows_2022[filter_rows_2022['TRUCK_ID'] == truck]['TOTAL_SALES_PER_ITEM'].sum()
-        #   st.write(f"Total sales for truck {truck}: ${total_sales_2022:.2f}")
-        #   total_sales_of_trucks_2022 += total_sales_2022
-              
-        # # Print total sales for all trucks combined
-        # st.write(f"Total sales for all {len(truck_avail_2022)} trucks: ${total_sales_of_trucks_2022:.2f}")
-        # average_sales_2022 = total_sales_of_trucks_2022 / len(truck_avail_2022)
-        # st.subheader(f"Average sales for each truck: ${average_sales_2022:.2f}")
-
+        
         total_sales_of_trucks_2022 = 0
         truck_avail_2022 = filter_rows_2022['TRUCK_ID'].unique()
         
         # Create a list to hold truck information
-        truck_info = []
+        truck_info_2022 = []
         
         for truck in truck_avail_2022:
             total_sales_2022 = filter_rows_2022[filter_rows_2022['TRUCK_ID'] == truck]['TOTAL_SALES_PER_ITEM'].sum()
-            truck_info.append({'Truck': truck, 'Total Sales': total_sales_2022})
+            truck_info_2022.append({'Truck': truck, 'Total Sales': total_sales_2022})
         
         # Display truck information in a table
-        st.table(pd.DataFrame(truck_info))
+        st.table(pd.DataFrame(truck_info_2022))
         
         # Calculate total and average sales
-        total_sales_of_trucks_2022 = sum(info['Total Sales'] for info in truck_info)
+        total_sales_of_trucks_2022 = sum(info['Total Sales'] for info in truck_info_2022)
         average_sales_2022 = total_sales_of_trucks_2022 / len(truck_avail_2022)
         
         # Print total sales for all trucks combined
