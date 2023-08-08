@@ -298,20 +298,44 @@ with tab4:
         output_data['MENU_TYPE'] = output_data['MENU_TYPE'].map(menut_reverse_mapping)
         output_data['TRUCK_BRAND_NAME'] = output_data['TRUCK_BRAND_NAME'].map(truckb_reverse_mapping)
         output_data['MENU_ITEM_NAME'] = output_data['MENU_ITEM_NAME'].map(menuitem_reverse_mapping)
-        
+
+        # filter output data to only contain predicted trucks
+        output_data = output_data[output_data['TRUCK_ID'] > 100]
         st.write(output_data)
 
-        # truck sales for 2022
+        # 2022 DATA
+        filter_rows_2022 = []
+        for index, row in maintable.iterrows():
+          if (season_input in row['SEASON']) & (truckb_input in row['TRUCK_BRAND_NAME']):
+            filter_rows_2022.append(row)
+          
+        filter_rows_2022 = pd.DataFrame(filter_rows_2022, columns=maintable.columns)
+      
+        total_sales_of_trucks_2022 = 0
+        truck_avail_2022 = filter_rows_2022['TRUCK_ID'].unique()
+        
+        # Create a list to hold truck information
+        truck_info_2022 = []
+        
+        for truck in truck_avail_2022:
+            total_sales_2022 = filter_rows_2022[filter_rows_2022['TRUCK_ID'] == truck]['TOTAL_SALES_PER_ITEM'].sum()
+            truck_info_2022.append({'Truck': truck, 'Total Sales': total_sales_2022})
+
+        
+        # truck sales with predicted truck
         total_sales_of_trucks = 0
         trucks_available = output_data['TRUCK_ID'].unique()
 
         # Create a list to hold truck information
         truck_info = []
-        
+
         for truck in trucks_available:
             total_sales = output_data[output_data['TRUCK_ID'] == truck]['PREDICTED_PRICE'].sum()
             truck_info.append({'Truck': truck, 'Total Sales': total_sales})
-        
+
+        truck_info_2022.extend(truck_info)
+        truck_info = truck_info_2022
+
         # Display truck information in a table
         st.table(pd.DataFrame(truck_info))
         
@@ -328,31 +352,15 @@ with tab4:
 
         # FOR COMPARISON WITH 2022 DATA
         st.header(f"Comparison with 2022 data")
-        filter_rows_2022 = []
-        for index, row in maintable.iterrows():
-          if (season_input in row['SEASON']) & (truckb_input in row['TRUCK_BRAND_NAME']):
-            filter_rows_2022.append(row)
-          
-        filter_rows_2022 = pd.DataFrame(filter_rows_2022, columns=maintable.columns)
-        
         st.write(filter_rows_2022)
         
-        total_sales_of_trucks_2022 = 0
-        truck_avail_2022 = filter_rows_2022['TRUCK_ID'].unique()
-        
-        # Create a list to hold truck information
-        truck_info_2022 = []
-        
-        for truck in truck_avail_2022:
-            total_sales_2022 = filter_rows_2022[filter_rows_2022['TRUCK_ID'] == truck]['TOTAL_SALES_PER_ITEM'].sum()
-            truck_info_2022.append({'Truck': truck, 'Total Sales': total_sales_2022})
-        
-        # Display truck information in a table
-        st.table(pd.DataFrame(truck_info_2022))
-        
+        # PRINTING OF 2022 TRUCK INFO
         # Calculate total and average sales
         total_sales_of_trucks_2022 = sum(info['Total Sales'] for info in truck_info_2022)
         average_sales_2022 = total_sales_of_trucks_2022 / len(truck_avail_2022)
+      
+        # Display truck information in a table
+        st.table(pd.DataFrame(truck_info_2022))
         
         # Print total sales for all trucks combined
         st.write(f"Total sales for all {len(truck_avail_2022)} trucks: ${total_sales_of_trucks_2022:.2f}")
