@@ -309,7 +309,7 @@ with tab4:
         truck_info = []
         
         for truck in trucks_available:
-            total_sales = output_data[output_data['TRUCK_ID'] == truck]['TOTAL_SALES_PER_ITEM'].sum()
+            total_sales = output_data[output_data['TRUCK_ID'] == truck]['PREDICTED_PRICE'].sum()
             truck_info.append({'Truck': truck, 'Total Sales': total_sales})
         
         # Display truck information in a table
