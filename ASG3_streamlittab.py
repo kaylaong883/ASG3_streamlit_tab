@@ -199,7 +199,7 @@ with tab4:
           TRUCK_ID = user + 101  # Starting truck ID for each user
       
           # Generate 700 rows of data
-          for i in range(700):
+          for i in range(600):
       
               LOCATION_ID = np.random.choice(location)
       
@@ -333,6 +333,7 @@ with tab4:
             total_sales = output_data[output_data['TRUCK_ID'] == truck]['PREDICTED_PRICE'].sum()
             truck_info.append({'Truck': truck, 'Total Sales': total_sales})
 
+        truck_info_2022_display = truck_info_2022
         truck_info_2022.extend(truck_info)
         truck_info = truck_info_2022
 
@@ -356,11 +357,11 @@ with tab4:
         
         # PRINTING OF 2022 TRUCK INFO
         # Calculate total and average sales
-        total_sales_of_trucks_2022 = sum(info['Total Sales'] for info in truck_info_2022)
+        total_sales_of_trucks_2022 = sum(info['Total Sales'] for info in truck_info_2022_display)
         average_sales_2022 = total_sales_of_trucks_2022 / len(truck_avail_2022)
       
         # Display truck information in a table
-        st.table(pd.DataFrame(truck_info_2022))
+        st.table(pd.DataFrame(truck_info_2022_display))
         
         # Print total sales for all trucks combined
         st.write(f"Total sales for all {len(truck_avail_2022)} trucks: ${total_sales_of_trucks_2022:.2f}")
