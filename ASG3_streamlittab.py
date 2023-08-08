@@ -380,15 +380,25 @@ with tab4:
         st.write(filter_rows_2021)
         total_sales_of_trucks_2021 = 0
         truck_avail_2021 = filter_rows_2021['TRUCK_ID'].unique()
-    
+
+        # Create a list to hold truck information
+        truck_info_2021 = []
+        
         for truck in truck_avail_2021:
-          total_sales_2021 = filter_rows_2021[filter_rows_2021['TRUCK_ID'] == truck]['TOTAL_SALES_PER_ITEM'].sum()
-          st.write(f"Total sales for truck {truck}: ${total_sales_2021:.2f}")
-          total_sales_of_trucks_2021 += total_sales_2021
-              
+            total_sales_2021 = filter_rows_2021[filter_rows_2021['TRUCK_ID'] == truck]['TOTAL_SALES_PER_ITEM'].sum()
+            truck_info_2021.append({'Truck': truck, 'Total Sales': total_sales_2021})
+        
+        # Display truck information in a table
+        st.table(pd.DataFrame(truck_info_2021))
+        
+        # Calculate total and average sales
+        total_sales_of_trucks_2021 = sum(info['Total Sales'] for info in truck_info_2021)
+        average_sales_2021 = total_sales_of_trucks_2021 / len(truck_avail_2021)
+        
         # Print total sales for all trucks combined
         st.write(f"Total sales for all {len(truck_avail_2021)} trucks: ${total_sales_of_trucks_2021:.2f}")
-        average_sales_2021 = total_sales_of_trucks_2021 / len(truck_avail_2021)
+        
+        # Display average sales
         st.subheader(f"Average sales for each truck: ${average_sales_2021:.2f}")
 
         # st.header("Breakdown of Cost for Buying a Food Truck")
