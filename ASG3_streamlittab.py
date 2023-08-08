@@ -70,11 +70,7 @@ with tab4:
       # Define the app title and favicon
       st.title('🚚🍝 Seasonal Menu Variations 🚛🥗') 
       st.subheader('Predict')
-      st.markdown("This interactive tab serves as a strategic tool for evaluating the potential benefits of introducing additional trucks during specific seasons. 
-      It empowers you to make informed predictions regarding total truck sales based on varying fleet sizes. By inputting the desired number of trucks for implementation, 
-      you can project the expected total sales. Furthermore, this tool calculates the average sales for each truck, facilitating a meaningful comparison with historical 
-      sales data from previous years. This insightful analysis aids in determining the viability and profitability of expanding your fleet during specific seasons, 
-      enabling you to make well-informed decisions for your business growth strategy. ")
+      st.markdown("This interactive tab serves as a strategic tool for evaluating the potential benefits of introducing additional trucks during specific seasons. It empowers you to make informed predictions regarding total truck sales based on varying fleet sizes. By inputting the desired number of trucks for implementation, you can project the expected total sales. Furthermore, this tool calculates the average sales for each truck, facilitating a meaningful comparison with historical sales data from previous years. This insightful analysis aids in determining the viability and profitability of expanding your fleet during specific seasons, enabling you to make well-informed decisions for your business growth strategy. ")
       
       st.header('Truck Menu Available')
       
