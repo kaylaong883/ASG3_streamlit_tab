@@ -68,10 +68,13 @@ with tab4:
         xgbr_gs = joblib.load(file)
         
       # Define the app title and favicon
-      st.title('Seasonal Menu Variations') 
+      st.title('🚚🍝 Seasonal Menu Variations 🚛🥗') 
       st.subheader('Predict')
-      st.markdown("This tab allows you to make predictions on the sales of the trucks  based on the neighbourhood and room type. The model used is a Random Forest Regressor trained on the Airbnb Singapore listings dataset.")
-      st.write('Choose a neighborhood group, neighborhood, and room type to get the predicted average price.')
+      st.markdown("This interactive tab serves as a strategic tool for evaluating the potential benefits of introducing additional trucks during specific seasons. 
+      It empowers you to make informed predictions regarding total truck sales based on varying fleet sizes. By inputting the desired number of trucks for implementation, 
+      you can project the expected total sales. Furthermore, this tool calculates the average sales for each truck, facilitating a meaningful comparison with historical 
+      sales data from previous years. This insightful analysis aids in determining the viability and profitability of expanding your fleet during specific seasons, 
+      enabling you to make well-informed decisions for your business growth strategy. ")
       
       st.header('Truck Menu Available')
       
@@ -83,7 +86,9 @@ with tab4:
       
       # Display the DataFrame as a table
       st.table(truck_menu_table)
-      
+
+      st.write('Select a season, the brand name of the truck you're interested in, and specify the desired number of trucks for implementation. This will provide you with the projected average sales per truck following the implementation.')
+            
       season_mapping = {'WINTER': 0, 'SPRING': 1, 'SUMMER': 2, 'AUTUMN': 3}
       season_reverse_mapping = {v: k for k, v in season_mapping.items()}
       season_labels = list(season_mapping.keys())
@@ -324,18 +329,42 @@ with tab4:
         filter_rows_2022 = pd.DataFrame(filter_rows_2022, columns=maintable.columns)
         
         st.write(filter_rows_2022)
+        # total_sales_of_trucks_2022 = 0
+        # truck_avail_2022 = filter_rows_2022['TRUCK_ID'].unique()
+    
+        # for truck in truck_avail_2022:
+        #   total_sales_2022 = filter_rows_2022[filter_rows_2022['TRUCK_ID'] == truck]['TOTAL_SALES_PER_ITEM'].sum()
+        #   st.write(f"Total sales for truck {truck}: ${total_sales_2022:.2f}")
+        #   total_sales_of_trucks_2022 += total_sales_2022
+              
+        # # Print total sales for all trucks combined
+        # st.write(f"Total sales for all {len(truck_avail_2022)} trucks: ${total_sales_of_trucks_2022:.2f}")
+        # average_sales_2022 = total_sales_of_trucks_2022 / len(truck_avail_2022)
+        # st.subheader(f"Average sales for each truck: ${average_sales_2022:.2f}")
+
         total_sales_of_trucks_2022 = 0
         truck_avail_2022 = filter_rows_2022['TRUCK_ID'].unique()
-    
+        
+        # Create a list to hold truck information
+        truck_info = []
+        
         for truck in truck_avail_2022:
-          total_sales_2022 = filter_rows_2022[filter_rows_2022['TRUCK_ID'] == truck]['TOTAL_SALES_PER_ITEM'].sum()
-          st.write(f"Total sales for truck {truck}: ${total_sales_2022:.2f}")
-          total_sales_of_trucks_2022 += total_sales_2022
-              
+            total_sales_2022 = filter_rows_2022[filter_rows_2022['TRUCK_ID'] == truck]['TOTAL_SALES_PER_ITEM'].sum()
+            truck_info.append({'Truck': truck, 'Total Sales': total_sales_2022})
+        
+        # Display truck information in a table
+        st.table(pd.DataFrame(truck_info))
+        
+        # Calculate total and average sales
+        total_sales_of_trucks_2022 = sum(info['Total Sales'] for info in truck_info)
+        average_sales_2022 = total_sales_of_trucks_2022 / len(truck_avail_2022)
+        
         # Print total sales for all trucks combined
         st.write(f"Total sales for all {len(truck_avail_2022)} trucks: ${total_sales_of_trucks_2022:.2f}")
-        average_sales_2022 = total_sales_of_trucks_2022 / len(truck_avail_2022)
+        
+        # Display average sales
         st.subheader(f"Average sales for each truck: ${average_sales_2022:.2f}")
+
 
         # FOR COMPARISON WITH 2021 DATA
         st.header(f"Comparison with 2021 data")
