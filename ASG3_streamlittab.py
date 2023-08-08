@@ -321,6 +321,7 @@ with tab4:
             total_sales_2022 = filter_rows_2022[filter_rows_2022['TRUCK_ID'] == truck]['TOTAL_SALES_PER_ITEM'].sum()
             truck_info_2022.append({'Truck': truck, 'Total Sales': total_sales_2022})
 
+        truck_info_2022_display = truck_info_2022
         
         # truck sales with predicted truck
         total_sales_of_trucks = 0
@@ -333,7 +334,6 @@ with tab4:
             total_sales = output_data[output_data['TRUCK_ID'] == truck]['PREDICTED_PRICE'].sum()
             truck_info.append({'Truck': truck, 'Total Sales': total_sales})
 
-        truck_info_2022_display = truck_info_2022
         truck_info_2022.extend(truck_info)
         truck_info = truck_info_2022
 
