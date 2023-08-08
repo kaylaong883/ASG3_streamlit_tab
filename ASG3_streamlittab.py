@@ -83,7 +83,7 @@ with tab4:
       # Display the DataFrame as a table
       st.table(truck_menu_table)
 
-      st.write('Select a season, the brand name of the truck you're interested in, and specify the desired number of trucks for implementation. This will provide you with the projected average sales per truck following the implementation.')
+      st.write("Select a season, the brand name of the truck you're interested in, and specify the desired number of trucks for implementation. This will provide you with the projected average sales per truck following the implementation.")
             
       season_mapping = {'WINTER': 0, 'SPRING': 1, 'SUMMER': 2, 'AUTUMN': 3}
       season_reverse_mapping = {v: k for k, v in season_mapping.items()}
