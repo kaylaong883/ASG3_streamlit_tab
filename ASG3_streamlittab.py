@@ -410,7 +410,7 @@ with tab4:
         # Display average sales
         st.subheader(f"Average sales for each truck: ${average_sales_2021:.2f}")
 
-        st.header("Breakdown of Cost for Buying a Food Truck")
+        st.header("Breakdown of Cost for Buying a Food Truck 💸🚚")
         truck_cost = 50000
         operating_costs = 1500
         equipment_costs = 10000
