@@ -413,11 +413,12 @@ with tab4:
         # Summary Table
         st.table([
         ["Year", "Total Sales", "Average Sales"],
-        ["Future", total_sales_of_trucks, average_sales],
+        [st.subheader("Future"), total_sales_of_trucks, average_sales],
         ["2022",total_sales_of_trucks_2022,average_sales_2022],
         ["2021",total_sales_of_trucks_2021,average_sales_2021]
         ])
 
+        perc_sale_increase = ((total_sales_of_trucks - total_sales_of_trucks_2022) / total_sales_of_trucks_2022 ) * 100
         
         st.header("Breakdown of Cost for Buying a Food Truck 💸🚚")
         truck_cost = 50000
