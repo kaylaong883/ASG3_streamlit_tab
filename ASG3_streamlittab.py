@@ -345,7 +345,7 @@ with tab4:
         average_sales = total_sales_of_trucks / (len(trucks_available) + 5 )
         
         # Print total sales for all trucks combined
-        st.write(f"Total sales for all {len(trucks_available) + 5} trucks: ${total_sales_of_trucks:.2f}")
+        st.subheader(f"Total sales for all {len(trucks_available) + 5} trucks: ${total_sales_of_trucks:.2f}")
         
         # Display average sales
         st.subheader(f"Average sales for each truck: ${average_sales:.2f}")
@@ -364,7 +364,7 @@ with tab4:
         st.table(pd.DataFrame(truck_info_2022_display))
         
         # Print total sales for all trucks combined
-        st.write(f"Total sales for all {len(truck_avail_2022)} trucks: ${total_sales_of_trucks_2022:.2f}")
+        st.subheader(f"Total sales for all {len(truck_avail_2022)} trucks: ${total_sales_of_trucks_2022:.2f}")
         
         # Display average sales
         st.subheader(f"Average sales for each truck: ${average_sales_2022:.2f}")
@@ -386,7 +386,7 @@ with tab4:
           
         filter_rows_2021 = pd.DataFrame(filter_rows_2021, columns=df_2021.columns)
         
-        st.write(filter_rows_2021)
+        # st.write(filter_rows_2021)
         total_sales_of_trucks_2021 = 0
         truck_avail_2021 = filter_rows_2021['TRUCK_ID'].unique()
 
@@ -398,14 +398,14 @@ with tab4:
             truck_info_2021.append({'Truck': truck, 'Total Sales': total_sales_2021})
         
         # Display truck information in a table
-        # st.table(pd.DataFrame(truck_info_2021))
+        st.table(pd.DataFrame(truck_info_2021))
         
         # Calculate total and average sales
         total_sales_of_trucks_2021 = sum(info['Total Sales'] for info in truck_info_2021)
         average_sales_2021 = total_sales_of_trucks_2021 / len(truck_avail_2021)
         
         # Print total sales for all trucks combined
-        st.write(f"Total sales for all {len(truck_avail_2021)} trucks: ${total_sales_of_trucks_2021:.2f}")
+        st.subheader(f"Total sales for all {len(truck_avail_2021)} trucks: ${total_sales_of_trucks_2021:.2f}")
         
         # Display average sales
         st.subheader(f"Average sales for each truck: ${average_sales_2021:.2f}")
