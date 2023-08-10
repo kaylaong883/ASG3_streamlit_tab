@@ -338,7 +338,14 @@ with tab4:
         truck_info = truck_info_2022
 
         # Display truck information in a table
-        st.table(pd.DataFrame(truck_info))
+        #st.table(pd.DataFrame(truck_info))
+        truck_info = pd.DataFrame(truck_info)
+        
+        # Filter rows where truck_id > 100
+        highlighted_rows = truck_info[truck_info['truck_id'] > 100]
+        
+        # Display the table with highlighted rows
+        st.table(highlighted_rows.style.apply(lambda x: ['background: yellow' if val > 100 else '' for val in x], axis=1))
         
         # Calculate total and average sales
         total_sales_of_trucks = sum(info['Total Sales'] for info in truck_info)
