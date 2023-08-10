@@ -355,10 +355,10 @@ with tab4:
         average_sales = total_sales_of_trucks / (len(trucks_available) + 5 )
         
         # Print total sales for all trucks combined
-        st.subheader(f"Total sales for all {len(trucks_available) + 5} trucks: ${total_sales_of_trucks:.2f}")
+        st.error(f"Total sales for all {len(trucks_available) + 5} trucks: ${total_sales_of_trucks:.2f}")
         
         # Display average sales
-        st.subheader(f"Average sales for each truck: ${average_sales:.2f}")
+        st.success(f"Average sales for each truck: ${average_sales:.2f}")
 
 
         # FOR COMPARISON WITH 2022 DATA
@@ -374,10 +374,10 @@ with tab4:
         st.table(pd.DataFrame(truck_info_2022_display))
         
         # Print total sales for all trucks combined
-        st.subheader(f"Total sales for all {len(truck_avail_2022)} trucks: ${total_sales_of_trucks_2022:.2f}")
+        st.error(f"Total sales for all {len(truck_avail_2022)} trucks: ${total_sales_of_trucks_2022:.2f}")
         
         # Display average sales
-        st.subheader(f"Average sales for each truck: ${average_sales_2022:.2f}")
+        st.success(f"Average sales for each truck: ${average_sales_2022:.2f}")
 
 
         # FOR COMPARISON WITH 2021 DATA
@@ -415,10 +415,10 @@ with tab4:
         average_sales_2021 = total_sales_of_trucks_2021 / len(truck_avail_2021)
         
         # Print total sales for all trucks combined
-        st.subheader(f"Total sales for all {len(truck_avail_2021)} trucks: ${total_sales_of_trucks_2021:.2f}")
+        st.error(f"Total sales for all {len(truck_avail_2021)} trucks: ${total_sales_of_trucks_2021:.2f}")
         
         # Display average sales
-        st.subheader(f"Average sales for each truck: ${average_sales_2021:.2f}")
+        st.success(f"Average sales for each truck: ${average_sales_2021:.2f}")
         
         # Summary Table
         perc_table = [
@@ -431,7 +431,7 @@ with tab4:
         perc_df = pd.DataFrame(perc_table, columns=header)
         st.table(perc_df)
 
-        perc_sale_increase = ((average_sales / average_sales_2022) * 100 ) - 100
+        perc_sale_increase = ((total_sales_of_trucks / total_sales_of_trucks_2022) * 100 ) - 100
         perc_text = f"Percentage Increase: {int(perc_sale_increase)}%"
         colored_box = f'<div style="{colored_box_style}">{perc_text}</div>'
         st.write(colored_box, unsafe_allow_html=True)
