@@ -421,6 +421,7 @@ with tab4:
         st.success(f"Average sales for each truck: ${average_sales_2021:.2f}")
         
         # Summary Table
+        st.header(f"Overall Analysis")
         perc_table = [
             ["Future", total_sales_of_trucks, average_sales],
             ["2022", total_sales_of_trucks_2022, average_sales_2022],
