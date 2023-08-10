@@ -428,7 +428,7 @@ with tab4:
             ["2021", total_sales_of_trucks_2021, average_sales_2021]
         ]
 
-        header = ["Year", "Total Sales", "Average Sales"]
+        header = ["Year", "Total Sales", "Average Sales Per Truck"]
         perc_df = pd.DataFrame(perc_table, columns=header)
         st.table(perc_df)
 
