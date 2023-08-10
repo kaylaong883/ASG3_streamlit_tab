@@ -411,15 +411,17 @@ with tab4:
         st.subheader(f"Average sales for each truck: ${average_sales_2021:.2f}")
 
         # Summary Table
-        st.write(
-            "| Year | Total Sales | Average Sales |",
-            "| ---- | ----------- | ------------- |",
-            "| **Future** |", total_sales_of_trucks, "|", average_sales, "|",
-            "| 2022 |", total_sales_of_trucks_2022, "|", average_sales_2022, "|",
-            "| 2021 |", total_sales_of_trucks_2021, "|", average_sales_2021, "|"
-        )
+        perc_table = [
+            ["Future", total_sales_of_trucks, average_sales],
+            ["2022", total_sales_of_trucks_2022, average_sales_2022],
+            ["2021", total_sales_of_trucks_2021, average_sales_2021]
+        ]
 
-        perc_sale_increase = ((total_sales_of_trucks - total_sales_of_trucks_2022) / total_sales_of_trucks_2022 ) * 100
+        header = ["Year", "Total Sales", "Average Sales"]
+        perc_df = pd.DataFrame(perc_table, columns=header)
+        st.table(perc_df)
+
+        perc_sale_increase = ((total_sales_of_trucks / total_sales_of_trucks_2022) * 100 ) - 100
         st.subheader(f"Percentage Increase: ${perc_sale_increase:.2%}")
         
         st.header("Breakdown of Cost for Buying a Food Truck 💸🚚")
