@@ -433,7 +433,7 @@ with tab4:
 
         perc_sale_increase = ((total_sales_of_trucks / total_sales_of_trucks_2022) * 100 ) - 100
         #st.subheader(f"Percentage Increase: {perc_sale_increase:%}")
-        perc_text = "Percentage Increase: {perc_sale_increase:%}"
+        perc_text = f"Percentage Increase: {perc_sale_increase:%}"
         colored_box = f'<div style="{colored_box_style}">{perc_text}</div>'
         st.write(colored_box, unsafe_allow_html=True)
 
