@@ -338,14 +338,7 @@ with tab4:
         truck_info = truck_info_2022
 
         # Display truck information in a table
-        #st.table(pd.DataFrame(truck_info))
-        truck_info = pd.DataFrame(truck_info)
-        
-        # Filter rows where truck_id > 100
-        highlighted_rows = truck_info[truck_info['Truck'] > 100]
-        
-        # Display the table with highlighted rows
-        st.table(highlighted_rows.style.apply(lambda x: ['background: yellow' if val > 100 else '' for val in x], axis=1))
+        st.table(pd.DataFrame(truck_info))
         
         # Calculate total and average sales
         total_sales_of_trucks = sum(info['Total Sales'] for info in truck_info)
@@ -417,6 +410,15 @@ with tab4:
         # Display average sales
         st.subheader(f"Average sales for each truck: ${average_sales_2021:.2f}")
 
+        # Summary Table
+        st.table([
+        ["Year", "Total Sales", "Average Sales"],
+        ["Future", total_sales_of_trucks, average_sales],
+        ["2022",total_sales_of_trucks_2022,average_sales_2022],
+        ["2021",total_sales_of_trucks_2021,average_sales_2021]
+        ])
+
+        
         st.header("Breakdown of Cost for Buying a Food Truck 💸🚚")
         truck_cost = 50000
         operating_costs = 1500
