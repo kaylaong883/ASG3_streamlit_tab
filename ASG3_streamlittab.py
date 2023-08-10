@@ -199,7 +199,7 @@ with tab4:
           TRUCK_ID = user + 101  # Starting truck ID for each user
       
           # Generate 700 rows of data
-          for i in range(600):
+          for i in range(700):
       
               LOCATION_ID = np.random.choice(location)
       
