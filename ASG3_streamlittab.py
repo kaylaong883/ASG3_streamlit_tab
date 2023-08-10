@@ -411,6 +411,16 @@ with tab4:
         st.subheader(f"Average sales for each truck: ${average_sales_2021:.2f}")
 
         # Summary Table
+
+        # Define a CSS style for the colored box
+        colored_box_style = """
+            display: inline-block;
+            padding: 10px;
+            border: 2px solid #0074D9;
+            background-color: #E6F7FF;
+            color: #0074D9;
+            border-radius: 5px;
+        """
         perc_table = [
             ["Future", total_sales_of_trucks, average_sales],
             ["2022", total_sales_of_trucks_2022, average_sales_2022],
@@ -422,8 +432,11 @@ with tab4:
         st.table(perc_df)
 
         perc_sale_increase = ((total_sales_of_trucks / total_sales_of_trucks_2022) * 100 ) - 100
-        st.subheader(f"Percentage Increase: ${perc_sale_increase:.2%}")
-        
+        #st.subheader(f"Percentage Increase: {perc_sale_increase:%}")
+        perc_text = "Percentage Increase: {perc_sale_increase:%}"
+        colored_box = f'<div style="{colored_box_style}">{perc_text}</div>'
+        st.write(colored_box, unsafe_allow_html=True)
+
         st.header("Breakdown of Cost for Buying a Food Truck 💸🚚")
         truck_cost = 50000
         operating_costs = 1500
