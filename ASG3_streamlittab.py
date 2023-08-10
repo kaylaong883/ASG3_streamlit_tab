@@ -417,7 +417,7 @@ with tab4:
         liscenses_permit = 28000
         other_costs = 2000
         output_data['cog'] = output_data['TOTAL_QTY_SOLD'] * output_data['COG_PER_ITEM_USD']
-        cog = truck_info['cog'].sum()
+        cog = output_data['cog'].sum()
         total_cost = truck_cost + operating_costs + equipment_costs + liscenses_permit + other_costs + cog
 
         st.write(f"Food Truck Cost: ${truck_cost}")
