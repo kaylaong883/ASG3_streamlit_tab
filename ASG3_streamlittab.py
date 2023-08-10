@@ -416,6 +416,7 @@ with tab4:
         equipment_costs = 10000
         liscenses_permit = 28000
         other_costs = 2000
+        truck_info = truck_info.astype({"TOTAL_QTY_SOLD":"int","COG_PER_ITEM_USD":"int"})
         truck_info['cog'] = truck_info['TOTAL_QTY_SOLD'] * truck_info['COG_PER_ITEM_USD']
         cog = truck_info['cog'].sum()
         total_cost = truck_cost + operating_costs + equipment_costs + liscenses_permit + other_costs + cog
