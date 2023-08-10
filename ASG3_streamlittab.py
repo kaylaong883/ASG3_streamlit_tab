@@ -411,14 +411,16 @@ with tab4:
         st.subheader(f"Average sales for each truck: ${average_sales_2021:.2f}")
 
         # Summary Table
-        st.table([
-        ["Year", "Total Sales", "Average Sales"],
-        [st.subheader("Future"), total_sales_of_trucks, average_sales],
-        ["2022",total_sales_of_trucks_2022,average_sales_2022],
-        ["2021",total_sales_of_trucks_2021,average_sales_2021]
-        ])
+        st.write(
+            "| Year | Total Sales | Average Sales |",
+            "| ---- | ----------- | ------------- |",
+            "| **Future** |", total_sales_of_trucks, "|", average_sales, "|",
+            "| 2022 |", total_sales_of_trucks_2022, "|", average_sales_2022, "|",
+            "| 2021 |", total_sales_of_trucks_2021, "|", average_sales_2021, "|"
+        )
 
         perc_sale_increase = ((total_sales_of_trucks - total_sales_of_trucks_2022) / total_sales_of_trucks_2022 ) * 100
+        st.subheader(f"Percentage Increase: ${perc_sale_increase:.2%}")
         
         st.header("Breakdown of Cost for Buying a Food Truck 💸🚚")
         truck_cost = 50000
