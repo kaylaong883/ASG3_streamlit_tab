@@ -68,7 +68,7 @@ with tab4:
         xgbr_gs = joblib.load(file)
         
       # Define the app title and favicon
-      st.title('🚚🍝 Seasonal Truck Implementation 🚛🥗') 
+      st.title('🚚🍝 Implementation of Additional Trucks 🚛🥗') 
       st.subheader('Predict')
       st.markdown("This interactive tab serves as a strategic tool for evaluating the potential benefits of introducing additional trucks during specific seasons. It empowers you to make informed predictions regarding total truck sales based on varying fleet sizes. By inputting the desired number of trucks for implementation, you can project the expected total sales. Furthermore, this tool calculates the average sales for each truck, facilitating a meaningful comparison with historical sales data from previous years. This insightful analysis aids in determining the viability and profitability of expanding your fleet during specific seasons, enabling you to make well-informed decisions for your business growth strategy. ")
       
@@ -353,7 +353,7 @@ with tab4:
 
         # FOR COMPARISON WITH 2022 DATA
         st.header(f"Comparison with 2022 data")
-        st.write(filter_rows_2022)
+        # st.write(filter_rows_2022)
         
         # PRINTING OF 2022 TRUCK INFO
         # Calculate total and average sales
@@ -398,7 +398,7 @@ with tab4:
             truck_info_2021.append({'Truck': truck, 'Total Sales': total_sales_2021})
         
         # Display truck information in a table
-        st.table(pd.DataFrame(truck_info_2021))
+        # st.table(pd.DataFrame(truck_info_2021))
         
         # Calculate total and average sales
         total_sales_of_trucks_2021 = sum(info['Total Sales'] for info in truck_info_2021)
