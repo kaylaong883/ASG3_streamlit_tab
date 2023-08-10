@@ -342,7 +342,7 @@ with tab4:
         truck_info = pd.DataFrame(truck_info)
         
         # Filter rows where truck_id > 100
-        highlighted_rows = truck_info[truck_info['TRUCK_ID'] > 100]
+        highlighted_rows = truck_info[truck_info['Truck'] > 100]
         
         # Display the table with highlighted rows
         st.table(highlighted_rows.style.apply(lambda x: ['background: yellow' if val > 100 else '' for val in x], axis=1))
