@@ -208,8 +208,8 @@ with tab4:
       for user in range(user_truck_input):
           TRUCK_ID = user + 101  # Starting truck ID for each user
       
-          # Generate 700 rows of data
-          for i in range(700):
+          # Generate 1000 rows of data
+          for i in range(100):
       
               LOCATION_ID = np.random.choice(location)
       
