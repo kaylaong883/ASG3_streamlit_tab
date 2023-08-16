@@ -433,12 +433,12 @@ with tab4:
         st.table(perc_df)
 
         perc_sale_increase = ((total_sales_of_trucks / total_sales_of_trucks_2022) * 100 ) - 100
-        perc_text = f"Percentage Increase: {int(perc_sale_increase)}%"
+        perc_text = f"Percentage Increase in Total Sales: {int(perc_sale_increase)}%"
         colored_box = f'<div style="{colored_box_style}">{perc_text}</div>'
         st.write(colored_box, unsafe_allow_html=True)
         st.write('')
         truck_perc_sale_increase = ((average_sales / average_sales_2022) * 100 ) - 100
-        truck_perc_text = f"Percentage Increase: {int(truck_perc_sale_increase)}%"
+        truck_perc_text = f"Percentage Increase for 1 Truck on Average: {int(truck_perc_sale_increase)}%"
         truck_colored_box = f'<div style="{colored_box_style}">{truck_perc_text}</div>'
         st.write(truck_colored_box, unsafe_allow_html=True)
         
