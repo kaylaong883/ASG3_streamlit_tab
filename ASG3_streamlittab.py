@@ -208,8 +208,8 @@ with tab4:
       for user in range(user_truck_input):
           TRUCK_ID = user + 101  # Starting truck ID for each user
       
-          # Generate 1000 rows of data
-          for i in range(1000):
+          # Generate 1500 rows of data
+          for i in range(1500):
       
               LOCATION_ID = np.random.choice(location)
       
@@ -436,7 +436,7 @@ with tab4:
         perc_text = f"Percentage Increase: {int(perc_sale_increase)}%"
         colored_box = f'<div style="{colored_box_style}">{perc_text}</div>'
         st.write(colored_box, unsafe_allow_html=True)
-
+        st.write('')
         truck_perc_sale_increase = ((average_sales / average_sales_2022) * 100 ) - 100
         truck_perc_text = f"Percentage Increase: {int(truck_perc_sale_increase)}%"
         truck_colored_box = f'<div style="{colored_box_style}">{truck_perc_text}</div>'
