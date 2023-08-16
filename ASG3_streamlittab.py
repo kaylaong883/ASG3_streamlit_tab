@@ -437,6 +437,11 @@ with tab4:
         colored_box = f'<div style="{colored_box_style}">{perc_text}</div>'
         st.write(colored_box, unsafe_allow_html=True)
 
+        truck_perc_sale_increase = ((average_sales / average_sales_2022) * 100 ) - 100
+        truck_perc_text = f"Percentage Increase: {int(truck_perc_sale_increase)}%"
+        truck_colored_box = f'<div style="{colored_box_style}">{truck_perc_text}</div>'
+        st.write(truck_colored_box, unsafe_allow_html=True)
+        
         st.header("Breakdown of Cost for Buying a Food Truck 💸🚚")
         truck_cost = 50000
         operating_costs = 1500
